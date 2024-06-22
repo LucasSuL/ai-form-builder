@@ -20,7 +20,7 @@ import { Loader2 } from "lucide-react";
 import { chatSession } from "@/configs/AiModal";
 
 const PROMPT =
-  ". Based on the description, please give me the form in json format with form title, form subheading, form field, form name, placeholder name, form label, required";
+  ". As per the description, please provide the form in json format. The form includes a form title, form subtitle, fields, names, placeholders, labels, and required. You can provide 'checkbox', but be careful not to include 'accept terms and conditions' and 'submit'";
 
 const CreateForm = () => {
   const [userInput, setUserInput] = useState("");

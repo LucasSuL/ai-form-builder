@@ -1,10 +1,11 @@
-'use client'
+"use client";
 
 import React, { useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import { ArrowLeft } from "lucide-react";
 import supabase from "@/configs/Database";
 import { useRouter } from "next/navigation";
+import FormUI from "../_components/FormUI";
 
 const extractJsonString = (input) => {
   const regex = /```json([\s\S]*?)```/;
@@ -44,13 +45,15 @@ const EditForm = ({ params }) => {
     <div className="p-10">
       <h2
         className="flex gap-2 py-3 cursor-pointer hover:font-bold"
-        onClick={()=>router.back()}
+        onClick={() => router.back()}
       >
         <ArrowLeft /> Back
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3">
-        <div>Controller</div>
-        <div className="md:col-span-2 border rounded-lg p-4 h-screen">Form</div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="p-5 border rounded-lg shadow-md">Controller</div>
+        <div className="md:col-span-2 border rounded-lg p-4 flex justify-center">
+          <FormUI jsonForm={jsonForm} />
+        </div>
       </div>
     </div>
   );
