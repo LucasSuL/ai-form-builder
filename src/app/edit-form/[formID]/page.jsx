@@ -41,6 +41,23 @@ const EditForm = ({ params }) => {
     setJsonForm(JSON.parse(extracted));
   };
 
+  useEffect(() => {}, [jsonForm]);
+  // handle form update
+  const onFieldUpdate = (value, index) => {
+    // 创建 jsonForm 的副本, 因为直接改对象的属性，react检测不到。但是react可以检测到这是一个新的jsonForm？
+    const updatedForm = { ...jsonForm };
+
+    // 更新副本中的字段
+    updatedForm.fields[index] = {
+      ...updatedForm.fields[index],
+      label: value.label,
+      placeholder: value.placeholder,
+    };
+
+    // 设置新的状态
+    setJsonForm(updatedForm);
+  };
+
   return (
     <div className="p-10">
       <h2
@@ -52,7 +69,7 @@ const EditForm = ({ params }) => {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
         <div className="p-5 border rounded-lg shadow-md">Controller</div>
         <div className="md:col-span-3 border rounded-lg p-4 flex justify-center">
-          <FormUI jsonForm={jsonForm} />
+          <FormUI jsonForm={jsonForm} onFieldUpdate={onFieldUpdate} />
         </div>
       </div>
     </div>

@@ -11,8 +11,10 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
+import FieldEdit from "./FieldEdit";
+import { Button } from "@/components/ui/button";
 
-const FormUI = ({ jsonForm }) => {
+const FormUI = ({ jsonForm, onFieldUpdate }) => {
   return (
     <div className="border p-5 md:max-w-lg rounded-lg">
       <h2 className="font-bold text-center text-2xl">{jsonForm?.formTitle}</h2>
@@ -21,9 +23,9 @@ const FormUI = ({ jsonForm }) => {
       </h2>
 
       {jsonForm?.fields?.map((field, index) => (
-        <div key={index}>
+        <div key={index} className="flex gap-5 items-center">
           {field.type == "select" ? (
-            <div className="my-3">
+            <div className="my-3 w-full">
               <label className="text-xs ms-1">{field.label}</label>
 
               <Select>
@@ -40,7 +42,7 @@ const FormUI = ({ jsonForm }) => {
               </Select>
             </div>
           ) : field.type == "radio" ? (
-            <div className="my-3">
+            <div className="my-3 w-full">
               <label className="text-xs ms-1">{field.label}</label>
 
               <RadioGroup className="mt-2">
@@ -55,12 +57,12 @@ const FormUI = ({ jsonForm }) => {
               </RadioGroup>
             </div>
           ) : field.type == "textarea" ? (
-            <div className="my-3">
+            <div className="my-3 w-full">
               <label className="text-xs ms-1">{field.label}</label>
               <Textarea placeholder={field.placeholder} />
             </div>
           ) : field.type == "checkbox" ? (
-            <div className="my-3">
+            <div className="my-3 w-full">
               {field?.options?.map((option, index) => (
                 <div className="items-top flex space-x-2" key={index}>
                   <Checkbox id={option.value} />
@@ -74,13 +76,26 @@ const FormUI = ({ jsonForm }) => {
                   </div>
                 </div>
               ))}
+
+              <div className="flex items-center space-x-2">
+                <Checkbox id={field.name} />
+                <label
+                  htmlFor={field.name}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  {field.label}{" "}
+                </label>
+              </div>
             </div>
           ) : (
-            <div className="my-3">
+            <div className="my-3 w-full">
               <label className="text-xs ms-1">{field.label}</label>
               <Input type={field.type} placeholder={field.placeholder} />
             </div>
           )}
+          <div className="my-3">
+            <FieldEdit defaultValue={field} onUpdate={(value)=>onFieldUpdate(value, index)}/>
+          </div>
         </div>
       ))}
 
@@ -100,6 +115,7 @@ const FormUI = ({ jsonForm }) => {
       </div>
 
       {/* button */}
+      <Button className="my-8">Submit Form</Button>
     </div>
   );
 };
