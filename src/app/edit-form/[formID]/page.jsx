@@ -7,14 +7,14 @@ import supabase from "@/configs/Database";
 import { useRouter } from "next/navigation";
 import FormUI from "../_components/FormUI";
 
-const extractJsonString = (input) => {
-  const regex = /```json([\s\S]*?)```/;
-  const match = input.match(regex);
-  if (match && match[1]) {
-    return match[1].trim(); // trim to remove any extra whitespace
-  }
-  return null;
-};
+// const extractJsonString = (input) => {
+//   const regex = /```json([\s\S]*?)```/;
+//   const match = input.match(regex);
+//   if (match && match[1]) {
+//     return match[1].trim(); // trim to remove any extra whitespace
+//   }
+//   return null;
+// };
 
 const EditForm = ({ params }) => {
   const { user } = useUser();
@@ -37,39 +37,66 @@ const EditForm = ({ params }) => {
       throw error;
     }
 
-    const extracted = extractJsonString(forms[0].jsonForm);
-    setJsonForm(JSON.parse(extracted));
+    setJsonForm(JSON.parse(forms[0].jsonForm));
   };
 
   useEffect(() => {}, [jsonForm]);
+
+
   // handle form update
-  const onFieldUpdate = (value, index) => {
-    // 创建 jsonForm 的副本, 因为直接改对象的属性，react检测不到。但是react可以检测到这是一个新的jsonForm？
+  const onFieldUpdate = async (value, index) => {
     const updatedForm = { ...jsonForm };
 
-    // 更新副本中的字段
     updatedForm.fields[index] = {
       ...updatedForm.fields[index],
       label: value.label,
       placeholder: value.placeholder,
     };
 
-    // 设置新的状态
     setJsonForm(updatedForm);
+
+    // update db
+    const { data, error } = await supabase
+      .from("forms")
+      .update({ jsonForm: updatedForm })
+      .eq("id", id)
+      .select();
   };
+
+  // handle form del
+  const onFieldDelete = async(index)=>{
+    const updatedForm = { ...jsonForm };
+
+    updatedForm.fields = updatedForm.fields.filter((_, i) => i !== index);
+
+    console.log(updatedForm.fields);
+    
+    setJsonForm(updatedForm);
+
+    // update del db
+    const { data, error } = await supabase
+      .from("forms")
+      .update({ jsonForm: updatedForm })
+      .eq("id", id)
+      .select();
+  }
 
   return (
     <div className="p-10">
-      <h2
-        className="flex gap-2 py-3 cursor-pointer hover:font-bold"
+      <p
+        className="inline-flex gap-1 py-3 cursor-pointer hover:underline items-center"
         onClick={() => router.back()}
       >
-        <ArrowLeft /> Back
-      </h2>
+        <ArrowLeft className="w-5 h-5" /> Back
+      </p>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
         <div className="p-5 border rounded-lg shadow-md">Controller</div>
         <div className="md:col-span-3 border rounded-lg p-4 flex justify-center">
-          <FormUI jsonForm={jsonForm} onFieldUpdate={onFieldUpdate} />
+          <FormUI
+            jsonForm={jsonForm}
+            onFieldUpdate={onFieldUpdate}
+            onFieldDelete={(index)=>onFieldDelete(index)}
+          />
         </div>
       </div>
     </div>

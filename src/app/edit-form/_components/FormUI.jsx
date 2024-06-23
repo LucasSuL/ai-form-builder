@@ -14,7 +14,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import FieldEdit from "./FieldEdit";
 import { Button } from "@/components/ui/button";
 
-const FormUI = ({ jsonForm, onFieldUpdate }) => {
+const FormUI = ({ jsonForm, onFieldUpdate,onFieldDelete }) => {
   return (
     <div className="border p-5 md:max-w-lg rounded-lg">
       <h2 className="font-bold text-center text-2xl">{jsonForm?.formTitle}</h2>
@@ -81,7 +81,7 @@ const FormUI = ({ jsonForm, onFieldUpdate }) => {
                 <Checkbox id={field.name} />
                 <label
                   htmlFor={field.name}
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
                   {field.label}{" "}
                 </label>
@@ -94,17 +94,22 @@ const FormUI = ({ jsonForm, onFieldUpdate }) => {
             </div>
           )}
           <div className="my-3">
-            <FieldEdit defaultValue={field} onUpdate={(value)=>onFieldUpdate(value, index)}/>
+            <FieldEdit
+              defaultValue={field}
+              onUpdate={(value) => onFieldUpdate(value, index)}
+              onDelete={()=>onFieldDelete(index)}
+            />
           </div>
         </div>
       ))}
 
+      {/* terms and conditions */}
       <div className="items-top flex space-x-2 mt-6">
         <Checkbox id="terms1" />
         <div className="grid gap-1.5 leading-none">
           <label
             htmlFor="terms1"
-            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
           >
             Accept terms and conditions
           </label>

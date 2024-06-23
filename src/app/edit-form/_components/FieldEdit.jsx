@@ -9,10 +9,21 @@ import {
 } from "@/components/ui/popover";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
-const FieldEdit = ({ defaultValue, onUpdate }) => {
-  const [label, setLabel] = useState();
-  const [placeholder, setPlaceholder] = useState();
+const FieldEdit = ({ defaultValue, onUpdate, onDelete }) => {
+  const [label, setLabel] = useState(defaultValue?.label);
+  const [placeholder, setPlaceholder] = useState(defaultValue?.placeholder);
   return (
     <div className="flex gap-1">
       <Popover>
@@ -41,7 +52,7 @@ const FieldEdit = ({ defaultValue, onUpdate }) => {
             ></Input>
           </div>
           <Button
-          className= "mt-3"
+            className="mt-3"
             size="sm"
             onClick={() =>
               onUpdate({
@@ -49,17 +60,31 @@ const FieldEdit = ({ defaultValue, onUpdate }) => {
                 placeholder: placeholder,
               })
             }
-          >Update</Button>
+          >
+            Update
+          </Button>
         </PopoverContent>
       </Popover>
 
-      <Popover>
-        <PopoverTrigger>
+      <AlertDialog>
+        <AlertDialogTrigger>
           {" "}
           <Trash className="h-4 w-4 text-red-500" />
-        </PopoverTrigger>
-        <PopoverContent>Place content for the popover here.</PopoverContent>
-      </Popover>
+        </AlertDialogTrigger>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete your
+              account and remove your data from our servers.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick = {()=>onDelete()}>Continue</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 };

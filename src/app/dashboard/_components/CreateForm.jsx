@@ -22,6 +22,15 @@ import { chatSession } from "@/configs/AiModal";
 const PROMPT =
   ". As per the description, please provide the form in pure json format without comment. The form includes a form title, form subtitle, fields, names, placeholders, labels, and required. You can provide 'checkbox', but be careful not to include 'accept terms and conditions' and 'submit'";
 
+const extractJsonString = (input) => {
+  const regex = /```json([\s\S]*?)```/;
+  const match = input.match(regex);
+  if (match && match[1]) {
+    return match[1].trim(); // trim to remove any extra whitespace
+  }
+  return null;
+};
+
 const CreateForm = () => {
   const [userInput, setUserInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -36,14 +45,18 @@ const CreateForm = () => {
       "Description: " + userInput + PROMPT
     );
 
-    // write db
     if (result.response.text()) {
-      console.log(result.response.text());
+      // parse response
+      const extracted = extractJsonString(result.response.text());
+
+      console.log("extracted = "+extracted);
+
+      // insert to db
       const { data, error } = await supabase
         .from("forms")
         .insert([
           {
-            jsonForm: result.response.text(),
+            jsonForm: extracted,
             createBy: user?.primaryEmailAddress?.emailAddress,
           },
         ])
