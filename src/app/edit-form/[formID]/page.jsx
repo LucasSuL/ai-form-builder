@@ -6,6 +6,7 @@ import { ArrowLeft } from "lucide-react";
 import supabase from "@/configs/Database";
 import { useRouter } from "next/navigation";
 import FormUI from "../_components/FormUI";
+import { toast } from "sonner";
 
 // const extractJsonString = (input) => {
 //   const regex = /```json([\s\S]*?)```/;
@@ -42,7 +43,6 @@ const EditForm = ({ params }) => {
 
   useEffect(() => {}, [jsonForm]);
 
-
   // handle form update
   const onFieldUpdate = async (value, index) => {
     const updatedForm = { ...jsonForm };
@@ -54,6 +54,9 @@ const EditForm = ({ params }) => {
     };
 
     setJsonForm(updatedForm);
+    toast("Update has been done.", {
+      description: `${new Date().toLocaleTimeString()},  ${new Date().toLocaleDateString()}`,
+    });
 
     // update db
     const { data, error } = await supabase
@@ -64,14 +67,17 @@ const EditForm = ({ params }) => {
   };
 
   // handle form del
-  const onFieldDelete = async(index)=>{
+  const onFieldDelete = async (index) => {
     const updatedForm = { ...jsonForm };
 
     updatedForm.fields = updatedForm.fields.filter((_, i) => i !== index);
 
     console.log(updatedForm.fields);
-    
+
     setJsonForm(updatedForm);
+    toast("Delete successfully.", {
+      description: `${new Date().toLocaleTimeString()},  ${new Date().toLocaleDateString()}`,
+    });
 
     // update del db
     const { data, error } = await supabase
@@ -79,7 +85,7 @@ const EditForm = ({ params }) => {
       .update({ jsonForm: updatedForm })
       .eq("id", id)
       .select();
-  }
+  };
 
   return (
     <div className="p-10">
@@ -95,7 +101,7 @@ const EditForm = ({ params }) => {
           <FormUI
             jsonForm={jsonForm}
             onFieldUpdate={onFieldUpdate}
-            onFieldDelete={(index)=>onFieldDelete(index)}
+            onFieldDelete={(index) => onFieldDelete(index)}
           />
         </div>
       </div>
