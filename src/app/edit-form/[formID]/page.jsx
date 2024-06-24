@@ -2,12 +2,14 @@
 
 import React, { useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Share2, SquareArrowUpRight } from "lucide-react";
 import supabase from "@/configs/Database";
 import { useRouter } from "next/navigation";
 import FormUI from "../_components/FormUI";
 import { toast } from "sonner";
 import Controller from "../_components/Controller";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const EditForm = ({ params }) => {
   const { user } = useUser();
@@ -83,13 +85,26 @@ const EditForm = ({ params }) => {
   };
 
   return (
-    <div className="p-10">
-      <p
-        className="inline-flex gap-1 py-3 cursor-pointer hover:underline items-center"
-        onClick={() => router.back()}
-      >
-        <ArrowLeft className="w-5 h-5" /> Back
-      </p>
+    <div className="px-5 mt-5">
+      <div className="flex justify-between">
+        <p
+          className="inline-flex gap-1 py-3 cursor-pointer hover:underline items-center"
+          onClick={() => router.back()}
+        >
+          <ArrowLeft className="w-5 h-5" /> Back
+        </p>
+        <div className="flex gap-2">
+          <Link href={`/preview/${id}`} target="_blank">
+            <Button className="flex gap-2">
+              <SquareArrowUpRight className="h-5 w-5" /> Live Preview
+            </Button>
+          </Link>
+          <Button className="flex gap-2 bg-green-600 hover:bg-green-500">
+            <Share2 className="h-5 w-5" />
+            Share
+          </Button>
+        </div>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         <div className="p-5 border rounded-lg shadow-md">
           <Controller

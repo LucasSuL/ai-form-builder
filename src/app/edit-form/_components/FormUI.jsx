@@ -20,6 +20,7 @@ const FormUI = ({
   onFieldDelete,
   bgColor,
   textColor,
+  isPreview,
 }) => {
   return (
     <div
@@ -101,13 +102,15 @@ const FormUI = ({
               <Input type={field.type} placeholder={field.placeholder} />
             </div>
           )}
-          <div className="my-3">
-            <FieldEdit
-              defaultValue={field}
-              onUpdate={(value) => onFieldUpdate(value, index)}
-              onDelete={() => onFieldDelete(index)}
-            />
-          </div>
+          {!isPreview && (
+            <div className="my-3">
+              <FieldEdit
+                defaultValue={field}
+                onUpdate={(value) => onFieldUpdate(value, index)}
+                onDelete={() => onFieldDelete(index)}
+              />
+            </div>
+          )}
         </div>
       ))}
 
@@ -128,7 +131,9 @@ const FormUI = ({
       </div>
 
       {/* button */}
-      <Button className={`my-8 bg-${textColor}`}>Submit Form</Button>
+      <Button className={`my-8 hover:bg-black bg-${textColor}`}>
+        Submit Form
+      </Button>
     </div>
   );
 };
