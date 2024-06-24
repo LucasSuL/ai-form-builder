@@ -7,6 +7,7 @@ import supabase from "@/configs/Database";
 import { useRouter } from "next/navigation";
 import FormUI from "../_components/FormUI";
 import { toast } from "sonner";
+import Controller from "../_components/Controller";
 
 // const extractJsonString = (input) => {
 //   const regex = /```json([\s\S]*?)```/;
@@ -96,7 +97,9 @@ const EditForm = ({ params }) => {
         <ArrowLeft className="w-5 h-5" /> Back
       </p>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
-        <div className="p-5 border rounded-lg shadow-md">Controller</div>
+        <div className="p-5 border rounded-lg shadow-md">
+          <Controller />
+        </div>
         <div className="md:col-span-3 border rounded-lg p-4 flex justify-center">
           <FormUI
             jsonForm={jsonForm}
