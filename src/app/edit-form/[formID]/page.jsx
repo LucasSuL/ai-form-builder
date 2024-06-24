@@ -9,19 +9,12 @@ import FormUI from "../_components/FormUI";
 import { toast } from "sonner";
 import Controller from "../_components/Controller";
 
-// const extractJsonString = (input) => {
-//   const regex = /```json([\s\S]*?)```/;
-//   const match = input.match(regex);
-//   if (match && match[1]) {
-//     return match[1].trim(); // trim to remove any extra whitespace
-//   }
-//   return null;
-// };
-
 const EditForm = ({ params }) => {
   const { user } = useUser();
   const id = params.formID;
   const [jsonForm, setJsonForm] = useState();
+  const [textColor, setTextColor] = useState("black");
+  const [bgColor, setBgColor] = useState("white");
   const router = useRouter();
 
   useEffect(() => {
@@ -38,8 +31,9 @@ const EditForm = ({ params }) => {
     if (error) {
       throw error;
     }
-
     setJsonForm(JSON.parse(forms[0].jsonForm));
+    setTextColor(forms[0].textColor);
+    setBgColor(forms[0].bgColor);
   };
 
   useEffect(() => {}, [jsonForm]);
@@ -96,13 +90,26 @@ const EditForm = ({ params }) => {
       >
         <ArrowLeft className="w-5 h-5" /> Back
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         <div className="p-5 border rounded-lg shadow-md">
-          <Controller />
+          <Controller
+            textColor={textColor}
+            setTextColor={setTextColor}
+            bgColor={bgColor}
+            setBgColor={setBgColor}
+            // jsonForm={jsonForm}
+            // setJsonForm={setJsonForm}
+            id={id}
+          />
         </div>
-        <div className="md:col-span-3 border rounded-lg p-4 flex justify-center">
+        <div
+          className="md:col-span-2 border rounded-lg p-4 flex justify-center"
+          style={{ background: bgColor }}
+        >
           <FormUI
             jsonForm={jsonForm}
+            bgColor={bgColor}
+            textColor={textColor}
             onFieldUpdate={onFieldUpdate}
             onFieldDelete={(index) => onFieldDelete(index)}
           />

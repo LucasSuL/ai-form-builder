@@ -14,9 +14,18 @@ import { Checkbox } from "@/components/ui/checkbox";
 import FieldEdit from "./FieldEdit";
 import { Button } from "@/components/ui/button";
 
-const FormUI = ({ jsonForm, onFieldUpdate,onFieldDelete }) => {
+const FormUI = ({
+  jsonForm,
+  onFieldUpdate,
+  onFieldDelete,
+  bgColor,
+  textColor,
+}) => {
   return (
-    <div className="border p-5 md:max-w-lg rounded-lg">
+    <div
+      className={`border p-5 md:max-w-lg rounded-lg text-${textColor}`}
+      style={{ background: "rgba(255, 255, 255, 0.5)" }}
+    >
       <h2 className="font-bold text-center text-2xl">{jsonForm?.formTitle}</h2>
       <h2 className="text-sm text-gray-400 text-center mt-2">
         {jsonForm?.formSubheading}
@@ -27,7 +36,6 @@ const FormUI = ({ jsonForm, onFieldUpdate,onFieldDelete }) => {
           {field.type == "select" ? (
             <div className="my-3 w-full">
               <label className="text-xs ms-1">{field.label}</label>
-
               <Select>
                 <SelectTrigger className="w-full text-gray-500">
                   <SelectValue placeholder="Select your preferred option" />
@@ -97,7 +105,7 @@ const FormUI = ({ jsonForm, onFieldUpdate,onFieldDelete }) => {
             <FieldEdit
               defaultValue={field}
               onUpdate={(value) => onFieldUpdate(value, index)}
-              onDelete={()=>onFieldDelete(index)}
+              onDelete={() => onFieldDelete(index)}
             />
           </div>
         </div>
@@ -120,7 +128,7 @@ const FormUI = ({ jsonForm, onFieldUpdate,onFieldDelete }) => {
       </div>
 
       {/* button */}
-      <Button className="my-8">Submit Form</Button>
+      <Button className={`my-8 bg-${textColor}`}>Submit Form</Button>
     </div>
   );
 };

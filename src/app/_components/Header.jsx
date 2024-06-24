@@ -10,7 +10,7 @@ const Header = () => {
   const { user, isSignedIn } = useUser();
 
   return (
-    <div className="mt-5 border-b shadow-sm">
+    <div className="border-b shadow-sm">
       <div className="flex items-center justify-between p-3">
         <Image src="/logo.svg" width={150} height={50} />
         {isSignedIn ? (

@@ -1,11 +1,12 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{js,jsx}',
-    './components/**/*.{js,jsx}',
-    './app/**/*.{js,jsx}',
-    './src/**/*.{js,jsx}',
+    "./pages/**/*.{js,jsx}",
+    "./components/**/*.{js,jsx}",
+    "./app/**/*.{js,jsx}",
+    "./src/**/*.{js,jsx}",
   ],
   prefix: "",
   theme: {
@@ -16,6 +17,7 @@ module.exports = {
         "2xl": "1400px",
       },
     },
+
     extend: {
       colors: {
         border: "hsl(var(--border))",
@@ -73,5 +75,23 @@ module.exports = {
       },
     },
   },
+  safelist: [
+    'bg-slate-950', 'text-slate-950',
+    'bg-zinc-50', 'text-zinc-50',
+    'bg-gray-300', 'text-gray-300',
+    'bg-gray-500', 'text-gray-500',
+    'bg-red-500', 'text-red-500',
+    'bg-orange-600', 'text-orange-600',
+    'bg-blue-500', 'text-blue-500',
+    'bg-green-500', 'text-green-500',
+    'bg-lime-500', 'text-lime-500',
+    'bg-cyan-400', 'text-cyan-400',
+    'bg-sky-600', 'text-sky-600',
+    'bg-indigo-400', 'text-indigo-400',
+    'bg-yellow-500', 'text-yellow-500',
+    'bg-purple-500', 'text-purple-500',
+    'bg-pink-400', 'text-pink-400',
+  ], 
+
   plugins: [require("tailwindcss-animate")],
-}
+};

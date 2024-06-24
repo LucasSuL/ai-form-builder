@@ -49,7 +49,7 @@ const CreateForm = () => {
       // parse response
       const extracted = extractJsonString(result.response.text());
 
-      console.log("extracted = "+extracted);
+      console.log("extracted = " + extracted);
 
       // insert to db
       const { data, error } = await supabase
@@ -101,7 +101,10 @@ const CreateForm = () => {
 
                 <Button onClick={onCreateForm} disabled={loading}>
                   {loading ? (
-                    <Loader2 className="animate-spin" />
+                    <div className="flex items-center gap-2">
+                      <Loader2 className="animate-spin" />
+                      Please wait
+                    </div>
                   ) : (
                     "Create Form"
                   )}
