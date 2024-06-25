@@ -127,6 +127,7 @@ const EditForm = ({ params }) => {
             textColor={textColor}
             onFieldUpdate={onFieldUpdate}
             onFieldDelete={(index) => onFieldDelete(index)}
+            id = {id}
           />
         </div>
       </div>

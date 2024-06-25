@@ -94,7 +94,7 @@ const CreateForm = () => {
               />
               <div className="flex gap-2 mt-5 justify-end">
                 <DialogClose asChild>
-                  <Button type="button" variant="destructive">
+                  <Button type="button" variant="destructive" disabled={loading}>
                     Close
                   </Button>
                 </DialogClose>

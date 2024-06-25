@@ -31,7 +31,7 @@ const Controller = ({ textColor, setTextColor, bgColor, setBgColor, id }) => {
 
     setIsSaving(false);
 
-    toast("Colors saved successfully!", {
+    toast("Your configuration has been saved.", {
       description: `${new Date().toLocaleTimeString()},  ${new Date().toLocaleDateString()}`,
     });
   };
@@ -48,7 +48,7 @@ const Controller = ({ textColor, setTextColor, bgColor, setBgColor, id }) => {
           <h2 className="mb-4 font-medium text-sm">Select Background Color</h2>
           <GradientPicker onColorSelect={setBgColor} selectedColor={bgColor} />
         </div>
-        <Button className="mt-5" onClick={() => saveConfig()}>
+        <Button className="mt-5" onClick={() => saveConfig()} disabled={isSaving}>
           {isSaving ? (
             <div className="flex items-center gap-2">
               <Loader2 className="animate-spin" />

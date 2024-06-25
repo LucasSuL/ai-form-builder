@@ -46,6 +46,7 @@ const Preview = ({ params }) => {
             onFieldUpdate={console.log()}
             onFieldDelete={console.log()}
             isPreview={true}
+            id={id}
           />
         </div>
       ) : (
@@ -57,7 +58,7 @@ const Preview = ({ params }) => {
         </div>
       )}
 
-      <Link href={process.env.NEXT_PUBLIC_BASE_URL} className="bg-black text-white text-sm fixed bottom-5 px-3 py-1 rounded-full left-5 cursor-pointer">
+      <Link href={'/'} className="bg-black text-white text-sm fixed bottom-5 px-3 py-1 rounded-full left-5 cursor-pointer">
         Build your own AI form!
       </Link>
     </div>
