@@ -1,7 +1,7 @@
 "use client";
 
 import { Input } from "@/components/ui/input";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   Select,
   SelectContent,
@@ -52,65 +52,18 @@ const FormUI = ({
       // if type is checkbox-group
       const currentItems = formData[name] || [];
 
-      // if checkbox is selected -> add it in, else, remove it
+      // 如果复选框被选中，则添加项目到列表中；否则，从列表中移除项目
       if (value) {
-        // add
+        // 添加项目到列表中
         const updatedItems = [...currentItems, itemName];
         setFormData({ ...formData, [name]: updatedItems });
       } else {
-        // remove
+        // 从列表中移除项目
         const updatedItems = currentItems.filter((item) => item !== itemName);
         setFormData({ ...formData, [name]: updatedItems });
       }
     }
   };
-
-  useEffect(() => {
-    if (readyForUpload) {
-      const updateDatabase = async () => {
-        try {
-          const { data, error } = await supabase
-            .from("userResponses")
-            .insert([
-              {
-                jsonResponse: formData,
-                createBy: user?.primaryEmailAddress?.emailAddress,
-                formID: id,
-              },
-            ])
-            .select();
-          if (error) {
-            throw error;
-          }
-
-          setIsSubmitting(false);
-
-          if (data) {
-            toast("Your response has been submitted.", {
-              description: `${new Date().toLocaleTimeString()}, ${new Date().toLocaleDateString()}`,
-            });
-          } else {
-            toast(
-              "There is an error while submitting your response, please try again later.",
-              {
-                description: `${new Date().toLocaleTimeString()}, ${new Date().toLocaleDateString()}`,
-              }
-            );
-          }
-        } catch (error) {
-          console.error(error);
-          toast("An error occurred: " + error.message, {
-            description: `${new Date().toLocaleTimeString()}, ${new Date().toLocaleDateString()}`,
-          });
-          setIsSubmitting(false);
-        } finally {
-          setReadyForUpload(false); // Reset the flag
-        }
-      };
-
-      updateDatabase();
-    }
-  }, [readyForUpload, formData, id, user?.primaryEmailAddress?.emailAddress]);
 
   const onFormSubmit = async (e) => {
     e.preventDefault();
@@ -120,23 +73,52 @@ const FormUI = ({
     console.log(jsonForm?.formTitle);
     console.log(111);
 
-    // Write supplement info
+    //write suppliment info
     setFormData((prevData) => ({
       ...prevData,
       formTitle: jsonForm?.formTitle,
       formSubtitle: jsonForm?.formSubtitle,
     }));
+    console.log(formData);
 
-    // Set the flag to indicate the form data is ready for upload
-    setReadyForUpload(true);
+    // update db
+    const { data, error } = await supabase
+      .from("userResponses")
+      .insert([
+        {
+          jsonResponse: formData,
+          createBy: user?.primaryEmailAddress?.emailAddress,
+          formID: id,
+        },
+      ])
+      .select();
+    if (error) {
+      throw error;
+    }
+
+    setIsSubmitting(false);
+
+    if (data) {
+      toast("Your response has been submitted.", {
+        description: `${new Date().toLocaleTimeString()},  ${new Date().toLocaleDateString()}`,
+      });
+    } else {
+      toast(
+        "There is an error while submitting your response, please try again later.",
+        {
+          description: `${new Date().toLocaleTimeString()},  ${new Date().toLocaleDateString()}`,
+        }
+      );
+    }
   };
 
   return (
     <form
-      className={`border p-5 md:max-w-lg rounded-lg text-${textColor} h-fit`}
+      className={`border p-5 md:max-w-lg rounded-lg text-${textColor} h-fit` }
       style={{ background: "rgba(255, 255, 255, 0.5)" }}
       onSubmit={onFormSubmit}
       ref={formRef}
+
     >
       <h2 className="font-bold text-center text-2xl">{jsonForm?.formTitle}</h2>
       <h2 className="text-sm text-gray-400 text-center mt-2">
