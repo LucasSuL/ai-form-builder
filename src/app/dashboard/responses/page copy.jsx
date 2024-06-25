@@ -18,7 +18,6 @@ import {
 } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
 import { Edit, Loader2, Trash2 } from "lucide-react";
-import * as XLSX from "xlsx";
 
 const Responses = () => {
   const { user } = useUser();
@@ -45,12 +44,12 @@ const Responses = () => {
     console.log(responses);
   };
 
-  const onDeleteRes = async (formID) => {
-    console.log(formID);
+  const onDeleteRes = async (resID) => {
+    console.log(resID);
     const { error } = await supabase
       .from("userResponses")
       .delete()
-      .eq("formID", formID);
+      .eq("id", resID);
 
     if (error) {
       toast("There is an error, please try again later.", {
@@ -65,67 +64,36 @@ const Responses = () => {
     getForms();
   };
 
-  const exportData = async (formID) => {
+  
+
+  const exportData = async (resID) => {
     setIsExporting(true);
 
     let { data: userResponses, error } = await supabase
       .from("userResponses")
-      .select()
-      .eq("formID", formID);
+      .select("jsonResponse")
+      .eq("id", resID);
 
-    if (userResponses && userResponses.length > 0) {
-      const { formTitle } = JSON.parse(userResponses[0].jsonResponse);
-      const flattenedData = userResponses.map((item) => {
-        const { formTitle, formSubtitle, ...rest } = JSON.parse(
-          // excludes title
-          item.jsonResponse
-        );
-        return {
-          createBy: item.createBy,
-          created_at: item.created_at,
-          ...rest,
-        };
+    if (userResponses) {
+      userResponses.forEach((userRes) => {
+        console.log(userRes);
       });
-
-      console.log(flattenedData);
-
-      // Create a new workbook and worksheet
-      const worksheet = XLSX.utils.json_to_sheet(flattenedData);
-      const workbook = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(workbook, worksheet, formTitle);
-
-      // Generate an Excel file and trigger download
-      XLSX.writeFile(workbook, `${formTitle}.xlsx`);
-
       setIsExporting(false);
     }
   };
-
-  const groupedResList = resList.reduce((acc, resJson) => {
-    const formID = resJson.formID;
-    if (!acc[formID]) {
-      acc[formID] = [];
-    }
-    acc[formID].push(resJson);
-    return acc;
-  }, {});
-
-  // Convert grouped object to an array
-  const groupedResArray = Object.entries(groupedResList);
-
   return (
     <div>
       <h2 className="p-5 font-bold text-xl">Responses</h2>
       <div className="mx-5 grid grid-cols-2 md:grid-cols-3 gap-5">
-        {groupedResArray ? (
-          groupedResArray.map(([formID, resGroup]) => {
-            // console.log(resJson);
-            const resForm = JSON.parse(resGroup[0].jsonResponse);
-            // const resID = resJson.id;
-            // const formID = resGroup[0].formID;
+        {resList ? (
+          resList.map((resJson, index) => {
+            console.log(resJson);
+            const resForm = JSON.parse(resJson.jsonResponse);
+            const resID = resJson.id;
+            const formID = resJson.formID;
             return (
               <div
-                key={formID}
+                key={index}
                 className="flex flex-col gap-1 shadow-md rounded-lg border p-3" // cursor-pointer hover:bg-gray-100 hover:shadow-lg
               >
                 <div className="flex justify-between align-middle">
@@ -150,7 +118,7 @@ const Responses = () => {
                         <AlertDialogCancel>Cancel</AlertDialogCancel>
                         <AlertDialogAction
                           onClick={() => {
-                            onDeleteRes(formID);
+                            onDeleteRes(resID);
                           }}
                         >
                           Continue
@@ -164,13 +132,13 @@ const Responses = () => {
                 <hr className="my-2"></hr>
                 <div className="flex justify-between items-center gap-2">
                   <p className="text-sm">
-                    <strong>{resGroup.length}</strong> Responses
+                    <strong>45</strong> Responses
                   </p>
 
                   <Button
                     className="text-xs"
                     size="sm"
-                    onClick={() => exportData(formID)}
+                    onClick={() => exportData(resID)}
                     disabled={isExporting}
                   >
                     {isExporting ? (
