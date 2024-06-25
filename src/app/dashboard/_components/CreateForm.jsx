@@ -103,7 +103,7 @@ const CreateForm = () => {
                   {loading ? (
                     <div className="flex items-center gap-2">
                       <Loader2 className="animate-spin" />
-                      Please wait
+                      Generating your form...
                     </div>
                   ) : (
                     "Create Form"

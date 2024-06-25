@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
-import { ArrowLeft, Share2, SquareArrowUpRight } from "lucide-react";
+import { ArrowLeft, Share, Share2, SquareArrowUpRight } from "lucide-react";
 import supabase from "@/configs/Database";
 import { useRouter } from "next/navigation";
 import FormUI from "../_components/FormUI";
@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import Controller from "../_components/Controller";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { RWebShare } from "react-web-share";
 
 const EditForm = ({ params }) => {
   const { user } = useUser();
@@ -84,6 +85,7 @@ const EditForm = ({ params }) => {
       .select();
   };
 
+  console.log(jsonForm);
   return (
     <div className="px-5 my-5">
       <div className="flex justify-between">
@@ -99,10 +101,21 @@ const EditForm = ({ params }) => {
               <SquareArrowUpRight className="h-5 w-5" /> Live Preview
             </Button>
           </Link>
-          <Button className="flex gap-2 bg-green-600 hover:bg-green-500">
-            <Share2 className="h-5 w-5" />
-            Share
-          </Button>
+          <RWebShare
+            data={{
+              text:
+              jsonForm.formSubtitle +
+                ", build your own form in seconds with AI Form Builder.",
+              url: `${process.env.NEXT_PUBLIC_BASE_URL}/preview/${id}`,
+              title: jsonForm.formTitle,
+            }}
+            onClick={() => console.log("shared successfully!")}
+          >
+            <Button variant="outline" className="text-xs flex gap-1" size="sm">
+              <Share className="h-4 w-4" />
+              Share
+            </Button>
+          </RWebShare>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -127,7 +140,7 @@ const EditForm = ({ params }) => {
             textColor={textColor}
             onFieldUpdate={onFieldUpdate}
             onFieldDelete={(index) => onFieldDelete(index)}
-            id = {id}
+            id={id}
           />
         </div>
       </div>

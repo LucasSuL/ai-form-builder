@@ -116,7 +116,7 @@ const FormUI = ({
     >
       <h2 className="font-bold text-center text-2xl">{jsonForm?.formTitle}</h2>
       <h2 className="text-sm text-gray-400 text-center mt-2">
-        {jsonForm?.formSubheading}
+        {jsonForm?.formSubtitle}
       </h2>
 
       {jsonForm?.fields?.map((field, index) => (

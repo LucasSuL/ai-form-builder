@@ -18,6 +18,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
+import { RWebShare } from "react-web-share";
 
 const FormList = () => {
   const { user } = useUser();
@@ -109,14 +110,26 @@ const FormList = () => {
               </p>
               <hr className="my-2"></hr>
               <div className="flex gap-2">
-                <Button
-                  variant="outline"
-                  className="text-xs flex gap-1"
-                  size="sm"
+                <RWebShare
+                  data={{
+                    text:
+                      form.formSubtitle +
+                      ", build your own form in seconds with AI Form Builder.",
+                    url: `${process.env.NEXT_PUBLIC_BASE_URL}/preview/${formID}`,
+                    title: form.formTitle,
+                  }}
+                  onClick={() => console.log("shared successfully!")}
                 >
-                  <Share className="h-4 w-4" />
-                  Share
-                </Button>
+                  <Button
+                    variant="outline"
+                    className="text-xs flex gap-1"
+                    size="sm"
+                  >
+                    <Share className="h-4 w-4" />
+                    Share
+                  </Button>
+                </RWebShare>
+
                 <Link href={`/edit-form/${formID}`}>
                   <Button className="text-xs flex gap-1" size="sm">
                     <Edit className="h-4 w-4" />
