@@ -87,63 +87,71 @@ const EditForm = ({ params }) => {
 
   console.log(jsonForm);
   return (
-    <div className="px-5 my-5">
-      <div className="flex justify-between">
-        <p
-          className="inline-flex gap-1 py-3 cursor-pointer hover:underline items-center"
-          onClick={() => router.back()}
-        >
-          <ArrowLeft className="w-5 h-5" /> Back
-        </p>
-        <div className="flex gap-2">
-          <Link href={`/preview/${id}`} target="_blank">
-            <Button className="flex gap-2">
-              <SquareArrowUpRight className="h-5 w-5" /> Live Preview
-            </Button>
-          </Link>
-          <RWebShare
-            data={{
-              text:
-              jsonForm.formSubtitle +
-                ", build your own form in seconds with AI Form Builder.",
-              url: `${process.env.NEXT_PUBLIC_BASE_URL}/preview/${id}`,
-              title: jsonForm.formTitle,
-            }}
-            onClick={() => console.log("shared successfully!")}
-          >
-            <Button variant="outline" className="text-xs flex gap-1" size="sm">
-              <Share className="h-4 w-4" />
-              Share
-            </Button>
-          </RWebShare>
+    <div>
+      {jsonForm && (
+        <div className="px-5 my-5">
+          <div className="flex justify-between">
+            <p
+              className="inline-flex gap-1 py-3 cursor-pointer hover:underline items-center"
+              onClick={() => router.back()}
+            >
+              <ArrowLeft className="w-5 h-5" /> Back
+            </p>
+            <div className="flex gap-2">
+              <Link href={`/preview/${id}`} target="_blank">
+                <Button className="flex gap-2">
+                  <SquareArrowUpRight className="h-5 w-5" /> Live Preview
+                </Button>
+              </Link>
+              <RWebShare
+                data={{
+                  text:
+                    jsonForm.formSubtitle +
+                    ", build your own form in seconds with AI Form Builder.",
+                  url: `${process.env.NEXT_PUBLIC_BASE_URL}/preview/${id}`,
+                  title: jsonForm.formTitle,
+                }}
+                onClick={() => console.log("shared successfully!")}
+              >
+                <Button
+                  variant="outline"
+                  className="text-xs flex gap-1"
+                  size="sm"
+                >
+                  <Share className="h-4 w-4" />
+                  Share
+                </Button>
+              </RWebShare>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="p-5 border rounded-lg shadow-md">
+              <Controller
+                textColor={textColor}
+                setTextColor={setTextColor}
+                bgColor={bgColor}
+                setBgColor={setBgColor}
+                // jsonForm={jsonForm}
+                // setJsonForm={setJsonForm}
+                id={id}
+              />
+            </div>
+            <div
+              className="md:col-span-2 border rounded-lg p-4 flex justify-center"
+              style={{ background: bgColor }}
+            >
+              <FormUI
+                jsonForm={jsonForm}
+                bgColor={bgColor}
+                textColor={textColor}
+                onFieldUpdate={onFieldUpdate}
+                onFieldDelete={(index) => onFieldDelete(index)}
+                id={id}
+              />
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div className="p-5 border rounded-lg shadow-md">
-          <Controller
-            textColor={textColor}
-            setTextColor={setTextColor}
-            bgColor={bgColor}
-            setBgColor={setBgColor}
-            // jsonForm={jsonForm}
-            // setJsonForm={setJsonForm}
-            id={id}
-          />
-        </div>
-        <div
-          className="md:col-span-2 border rounded-lg p-4 flex justify-center"
-          style={{ background: bgColor }}
-        >
-          <FormUI
-            jsonForm={jsonForm}
-            bgColor={bgColor}
-            textColor={textColor}
-            onFieldUpdate={onFieldUpdate}
-            onFieldDelete={(index) => onFieldDelete(index)}
-            id={id}
-          />
-        </div>
-      </div>
+      )}
     </div>
   );
 };

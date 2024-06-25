@@ -3,6 +3,8 @@ import { usePathname } from "next/navigation";
 import React, { useEffect } from "react";
 import { Button } from "../../../components/ui/button";
 import { Progress } from "../../../components/ui/progress";
+import Link from "next/link";
+import CreateForm from "./CreateForm";
 
 const SideNav = () => {
   const menuList = [
@@ -27,7 +29,8 @@ const SideNav = () => {
     <div className="h-screen shadow-md border-r">
       <div className="p-5 text-sm">
         {menuList.map((menu, index) => (
-          <div
+          <Link
+            href={menu.path}
             key={index}
             className={`flex items-center gap-3 px-4 py-2 mb-1 hover:bg-primary hover:text-white rounded-lg cursor-pointer ${
               path == menu.path && "bg-primary text-white"
@@ -35,11 +38,13 @@ const SideNav = () => {
           >
             <menu.icon />
             {menu.name}
-          </div>
+          </Link>
         ))}
       </div>
       <div className="fixed bottom-10 p-5 w-64">
-        <Button className="w-full">+ Create Form</Button>
+        <div className="w-full ">
+          <CreateForm />
+        </div>
         <div className="mt-5">
           <Progress value={67} />
           <p className="text-sm mt-2 text-gray-600">

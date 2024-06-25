@@ -36,23 +36,19 @@ const FormUI = ({
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    console.log(name, value);
     setFormData({ ...formData, [name]: value });
   };
 
   const handleSelectChange = (name, value) => {
-    console.log(name, value);
     setFormData({ ...formData, [name]: value });
   };
 
   const handleCheckboxChange = (name, itemName, value) => {
     // if type is checkbox
     if (!itemName) {
-      console.log(name, value);
       setFormData({ ...formData, [name]: value });
     } else {
       // if type is checkbox-group
-      console.log(name, itemName, value);
       const currentItems = formData[name] || [];
 
       // 如果复选框被选中，则添加项目到列表中；否则，从列表中移除项目
@@ -73,6 +69,17 @@ const FormUI = ({
     console.log("formID: " + id);
     setIsSubmitting(true);
 
+    console.log(jsonForm?.formTitle);
+    console.log(111);
+    //write suppliment info
+    setFormData((prevData) => ({
+      ...prevData,
+      formTitle: jsonForm?.formTitle,
+      formSubtitle: jsonForm?.formSubtitle,
+    }));
+    console.log(formData);
+
+    // update db
     const { data, error } = await supabase
       .from("userResponses")
       .insert([

@@ -53,8 +53,6 @@ const FormList = () => {
 
       throw error;
     }
-    console.log(11111);
-
     toast("Your form has been deleted.", {
       description: `${new Date().toLocaleTimeString()},  ${new Date().toLocaleDateString()}`,
     });
@@ -62,7 +60,7 @@ const FormList = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
+    <div className="mx-5 grid grid-cols-2 md:grid-cols-3 gap-5">
       {formList ? (
         formList.map((formJson, index) => {
           const form = JSON.parse(formJson.jsonForm);
@@ -102,10 +100,10 @@ const FormList = () => {
                   </AlertDialogContent>
                 </AlertDialog>
               </div>
-              <p className="text-center text-sm font-medium">
+              <p className="font-medium">
                 {form.formTitle}
               </p>
-              <p className="text-center text-xs text-gray-600">
+              <p className="text-sm text-gray-600">
                 {form.formSubtitle}
               </p>
               <hr className="my-2"></hr>
