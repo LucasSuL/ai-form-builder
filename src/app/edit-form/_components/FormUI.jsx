@@ -115,7 +115,7 @@ const FormUI = ({
 
   return (
     <form
-      className={`border p-5 md:max-w-lg rounded-lg text-${textColor}`}
+      className={`border p-5 md:max-w-lg rounded-lg text-${textColor} h-fit` }
       style={{ background: "rgba(255, 255, 255, 0.5)" }}
       onSubmit={onFormSubmit}
       ref={formRef}

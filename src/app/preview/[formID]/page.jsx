@@ -33,10 +33,10 @@ const Preview = ({ params }) => {
   };
 
   return (
-    <div>
+    <div className="">
       {form ? (
         <div
-          className="flex justify-center p-10"
+          className="flex justify-center p-10 h-screen"
           style={{ background: form.bgColor }}
         >
           <FormUI
