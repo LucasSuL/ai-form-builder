@@ -20,7 +20,7 @@ import { Loader2 } from "lucide-react";
 import { chatSession } from "@/configs/AiModal";
 
 const PROMPT =
-  ". As per the description, please provide the form in pure json format without comment. The form includes a form title, form subtitle, fields, names, placeholders, labels, and required. You can provide 'checkbox', but be careful not to include 'accept terms and conditions' and 'submit'";
+  ". As per the description, please provide the form in pure json format without comment. The form must includes 'formTitle', 'formSubtitle', fields, names, placeholders, labels, and required. You can provide 'checkbox', but be careful not to include 'accept terms and conditions' and 'submit'";
 
 const extractJsonString = (input) => {
   const regex = /```json([\s\S]*?)```/;

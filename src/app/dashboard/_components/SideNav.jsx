@@ -29,7 +29,7 @@ const SideNav = () => {
         {menuList.map((menu, index) => (
           <div
             key={index}
-            className={`flex items-center gap-3 px-4 py-2 mb-3 hover:bg-primary hover:text-white rounded-lg cursor-pointer ${
+            className={`flex items-center gap-3 px-4 py-2 mb-1 hover:bg-primary hover:text-white rounded-lg cursor-pointer ${
               path == menu.path && "bg-primary text-white"
             }`}
           >

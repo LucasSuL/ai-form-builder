@@ -85,7 +85,7 @@ const EditForm = ({ params }) => {
   };
 
   return (
-    <div className="px-5 mt-5">
+    <div className="px-5 my-5">
       <div className="flex justify-between">
         <p
           className="inline-flex gap-1 py-3 cursor-pointer hover:underline items-center"

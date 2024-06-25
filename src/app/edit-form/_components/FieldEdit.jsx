@@ -1,6 +1,6 @@
 "use client";
 
-import { Trash, Edit } from "lucide-react";
+import { Trash2, Edit } from "lucide-react";
 import React, { useState } from "react";
 import {
   Popover,
@@ -69,7 +69,7 @@ const FieldEdit = ({ defaultValue, onUpdate, onDelete }) => {
       <AlertDialog>
         <AlertDialogTrigger>
           {" "}
-          <Trash className="h-4 w-4 text-red-500" />
+          <Trash2 className="h-4 w-4 text-red-500" />
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
