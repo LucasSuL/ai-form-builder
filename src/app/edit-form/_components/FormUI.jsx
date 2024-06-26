@@ -16,7 +16,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import FieldEdit from "./FieldEdit";
 import { Button } from "@/components/ui/button";
 import supabase from "@/configs/Database";
-import { useUser } from "@clerk/nextjs";
+import { SignInButton, useUser } from "@clerk/nextjs";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 
@@ -28,8 +28,9 @@ const FormUI = ({
   textColor,
   isPreview,
   id,
+  enableSignIn,
 }) => {
-  const { user } = useUser();
+  const { user, isSignedIn } = useUser();
   const formRef = useRef(null);
   const [formData, setFormData] = useState();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -279,20 +280,46 @@ const FormUI = ({
       </div>
 
       {/* button */}
-      <Button
-        type="submit"
-        className={`my-8 hover:bg-black bg-black`}
-        disabled={isSubmitting}
-      >
-        {isSubmitting ? (
-          <div className="flex items-center gap-2">
-            <Loader2 className="animate-spin" />
-            Please wait...
-          </div>
-        ) : (
-          "Submit Form"
-        )}
-      </Button>
+      {enableSignIn && !isSignedIn ? (
+        <Button className="mt-8 hover:bg-black bg-black">
+          <SignInButton mode="modal">Sign In before Submit.</SignInButton>
+        </Button>
+      ) : (
+        <Button
+          type="submit"
+          className="mt-8 hover:bg-black bg-black"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? (
+            <div className="flex items-center gap-2">
+              <Loader2 className="animate-spin" />
+              Please wait...
+            </div>
+          ) : (
+            "Submit Form"
+          )}
+        </Button>
+      )}
+      {/* {isSignedIn ? (
+        <Button
+          type="submit"
+          className={`my-8 hover:bg-black bg-black`}
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? (
+            <div className="flex items-center gap-2">
+              <Loader2 className="animate-spin" />
+              Please wait...
+            </div>
+          ) : (
+            "Submit Form"
+          )}
+        </Button>
+      ) : (
+        <Button>
+          <SignInButton mode="modal">Sign In before Submit.</SignInButton>
+        </Button>
+      )} */}
     </form>
   );
 };

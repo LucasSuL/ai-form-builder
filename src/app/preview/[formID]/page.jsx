@@ -47,6 +47,7 @@ const Preview = ({ params }) => {
             onFieldDelete={console.log()}
             isPreview={true}
             id={id}
+            enableSignIn = {form.enableSignIn}
           />
         </div>
       ) : (

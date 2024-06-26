@@ -7,9 +7,11 @@ import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import supabase from "@/configs/Database";
 import { toast } from "sonner";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const Controller = ({ textColor, setTextColor, bgColor, setBgColor, id }) => {
   const [isSaving, setIsSaving] = useState(false);
+  const [enableSignIn, setEnableSignIn] = useState(false);
 
   const saveConfig = async () => {
     setIsSaving(true);
@@ -17,7 +19,11 @@ const Controller = ({ textColor, setTextColor, bgColor, setBgColor, id }) => {
     // insert to db
     const { data, error } = await supabase
       .from("forms")
-      .update({ textColor: textColor, bgColor: bgColor })
+      .update({
+        textColor: textColor,
+        bgColor: bgColor,
+        enableSignIn: enableSignIn,
+      })
       .eq("id", id)
       .select();
 
@@ -48,7 +54,17 @@ const Controller = ({ textColor, setTextColor, bgColor, setBgColor, id }) => {
           <h2 className="mb-4 font-medium text-sm">Select Background Color</h2>
           <GradientPicker onColorSelect={setBgColor} selectedColor={bgColor} />
         </div>
-        <Button className="mt-5" onClick={() => saveConfig()} disabled={isSaving}>
+        <div className="my-4 flex gap-2 items-start">
+          <div>
+            <Checkbox onCheckedChange={(e) => setEnableSignIn(e)} />
+          </div>
+          <p className="text-sm">Enable Social Authentication before submit.</p>
+        </div>
+        <Button
+          className="mt-5"
+          onClick={() => saveConfig()}
+          disabled={isSaving}
+        >
           {isSaving ? (
             <div className="flex items-center gap-2">
               <Loader2 className="animate-spin" />
