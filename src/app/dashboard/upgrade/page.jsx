@@ -27,7 +27,7 @@ const upgrade = () => {
 
               <a
                 className="mt-4 block rounded-lg border border-primary bg-primary px-12 py-3 text-center text-sm font-medium text-white hover:bg-transparent hover:text-primary focus:outline-none focus:ring active:text-indigo-500 sm:mt-6"
-                href={`${PricingPlan[0].link}`} target = "_blank" 
+                href={PricingPlan[0].link} target = "_blank" 
               >
                 Get Started
               </a>
@@ -177,7 +177,7 @@ const upgrade = () => {
 
               <a
                 className="mt-4 block rounded-lg border border-primary bg-primary px-12 py-3 text-center text-sm font-medium text-white hover:bg-transparent hover:text-primary focus:outline-none focus:ring active:text-indigo-500 sm:mt-6"
-                href={`${PricingPlan[1].link}`} target = "_blank" 
+                href={PricingPlan[1].link} target = "_blank" 
               >
                 Get Started
               </a>
@@ -323,7 +323,7 @@ const upgrade = () => {
 
               <a
                 className="mt-4 block rounded-lg border border-primary bg-primary px-12 py-3 text-center text-sm font-medium text-white hover:bg-transparent hover:text-primary focus:outline-none focus:ring active:text-indigo-500 sm:mt-6"
-                href={`${PricingPlan[2].link}`} target = "_blank" 
+                href={PricingPlan[2].link} target = "_blank" 
               >
                 Get Started
               </a>
