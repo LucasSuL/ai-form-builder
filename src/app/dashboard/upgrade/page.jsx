@@ -1,9 +1,10 @@
 "use client";
+
 import React from "react";
 import PricingPlan from "@/app/_data/PricingPlan";
 import { useUser } from "@clerk/nextjs";
 
-const upgrade = () => {
+const Upgrade = () => {
   const user = useUser();
 
   return (
@@ -479,4 +480,4 @@ const upgrade = () => {
   );
 };
 
-export default upgrade;
+export default Upgrade;
