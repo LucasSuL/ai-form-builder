@@ -1,10 +1,14 @@
+'use client'
+
 import { Library, LineChart, MessageCircle, Shield } from "lucide-react";
 import { usePathname } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "../../../components/ui/button";
 import { Progress } from "../../../components/ui/progress";
 import Link from "next/link";
 import CreateForm from "./CreateForm";
+import { useUser } from "@clerk/nextjs";
+import supabase from "@/configs/Database";
 
 const SideNav = () => {
   const menuList = [
@@ -20,6 +24,28 @@ const SideNav = () => {
   ];
 
   const path = usePathname();
+  const { user } = useUser();
+  const [formList, setFormList] = useState([]);
+
+  useEffect(() => {
+    user && getForms();
+  }, [user]);
+
+  const getForms = async () => {
+    let { data: forms, error } = await supabase
+      .from("forms")
+      .select("*")
+      // Filters
+      .eq("createBy", user?.primaryEmailAddress?.emailAddress)
+      .order("created_at", { ascending: false }); // 按 created_at 降序排列
+
+    if (error) {
+      throw error;
+    }
+
+    setFormList(forms);
+    console.log(forms);
+  };
 
   // useEffect(() => {
   //   console.log(path);
@@ -46,9 +72,9 @@ const SideNav = () => {
           <CreateForm />
         </div>
         <div className="mt-5">
-          <Progress value={67} />
+          <Progress value={(formList?.length/3)*100}  className="border-2"/>
           <p className="text-sm mt-2 text-gray-600">
-            <strong>2 </strong>Out of <strong>3</strong> File Created
+            <strong>{formList?.length} </strong>Out of <strong>3</strong> File Created
           </p>
           <p className="text-sm mt-2 text-gray-600">
             Update your plan for <strong>unlimited</strong> AI form build
