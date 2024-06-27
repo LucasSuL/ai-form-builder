@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import supabase from "@/configs/Database";
 import { useUser } from "@clerk/nextjs";
-import { Edit, Loader2, Share, Trash2 } from "lucide-react";
+import { Copy, Edit, Loader2, Share, Trash2 } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import {
@@ -18,7 +18,18 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
-import { RWebShare } from "react-web-share";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 const FormList = () => {
   const { user } = useUser();
@@ -59,8 +70,15 @@ const FormList = () => {
     getForms();
   };
 
+  const handleCopyClick = (formID) => {
+    navigator.clipboard.writeText(`lucassu-ai-form-builder.vercel.app/preview/${formID}`);
+    toast("Live link copied.", {
+      // description: `${new Date().toLocaleTimeString()},  ${new Date().toLocaleDateString()}`,
+    });
+  };
+
   return (
-    <div className="mx-5 grid grid-cols-2 md:grid-cols-3 gap-5">
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-5 mt-4">
       {formList ? (
         formList.map((formJson, index) => {
           const form = JSON.parse(formJson.jsonForm);
@@ -68,56 +86,49 @@ const FormList = () => {
           return (
             <div
               key={index}
-              className="flex flex-col gap-1 shadow-md rounded-lg border p-3" // cursor-pointer hover:bg-gray-100 hover:shadow-lg
+              className="flex flex-col gap-1 shadow-md rounded-lg border p-3 justify-between" // cursor-pointer hover:bg-gray-100 hover:shadow-lg
             >
-              <div className="flex justify-between align-middle">
-                <div></div>
-                <AlertDialog>
-                  <AlertDialogTrigger>
-                    {" "}
-                    <Trash2 className="h-4 w-4 text-red-600 cursor-pointer hover:scale-105" />
-                  </AlertDialogTrigger>
-                  <AlertDialogContent>
-                    <AlertDialogHeader>
-                      <AlertDialogTitle>
-                        Are you absolutely sure?
-                      </AlertDialogTitle>
-                      <AlertDialogDescription>
-                        This action cannot be undone. This will permanently
-                        delete your form and remove your data from our servers.
-                      </AlertDialogDescription>
-                    </AlertDialogHeader>
-                    <AlertDialogFooter>
-                      <AlertDialogCancel>Cancel</AlertDialogCancel>
-                      <AlertDialogAction
-                        onClick={() => {
-                          onDeleteForm(formID);
-                        }}
-                      >
-                        Continue
-                      </AlertDialogAction>
-                    </AlertDialogFooter>
-                  </AlertDialogContent>
-                </AlertDialog>
+              <div>
+                <div className="flex justify-between align-middle">
+                  <div></div>
+                  <AlertDialog>
+                    <AlertDialogTrigger>
+                      {" "}
+                      <Trash2 className="h-4 w-4 text-red-600 cursor-pointer hover:scale-105" />
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                      <AlertDialogHeader>
+                        <AlertDialogTitle>
+                          Are you absolutely sure?
+                        </AlertDialogTitle>
+                        <AlertDialogDescription>
+                          This action cannot be undone. This will permanently
+                          delete your form and remove your data from our
+                          servers.
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogAction
+                          onClick={() => {
+                            onDeleteForm(formID);
+                          }}
+                        >
+                          Continue
+                        </AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
+                </div>
+                <p className="font-medium">{form.formTitle}</p>
+                <p className="text-sm text-gray-600">{form.formSubtitle}</p>
               </div>
-              <p className="font-medium">
-                {form.formTitle}
-              </p>
-              <p className="text-sm text-gray-600">
-                {form.formSubtitle}
-              </p>
-              <hr className="my-2"></hr>
-              <div className="flex gap-2">
-                <RWebShare
-                  data={{
-                    text:
-                      form.formSubtitle +
-                      ", build your own form in seconds with AI Form Builder.",
-                    url: `${process.env.NEXT_PUBLIC_BASE_URL}/preview/${formID}`,
-                    title: form.formTitle,
-                  }}
-                  onClick={() => console.log("shared successfully!")}
-                >
+
+              <div>
+                <hr className="my-2"></hr>
+                <div className="flex gap-2">
+                <Dialog>
+                <DialogTrigger asChild>
                   <Button
                     variant="outline"
                     className="text-xs flex gap-1"
@@ -126,16 +137,49 @@ const FormList = () => {
                     <Share className="h-4 w-4" />
                     Share
                   </Button>
-                </RWebShare>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-md">
+                  <DialogHeader>
+                    <DialogTitle>Share link</DialogTitle>
+                    <DialogDescription>
+                      Anyone who has this link will be able to view this.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="flex items-center space-x-2">
+                    <div className="grid flex-1 gap-2">
+                      <Label htmlFor="link" className="sr-only">
+                        Link
+                      </Label>
+                      <Input
+                        id="link"
+                        defaultValue={`lucassu-ai-form-builder.vercel.app/preview/${formID}`}
+                        readOnly
+                      />
+                    </div>
+                    <Button type="submit" size="sm" className="px-3" onClick={()=>handleCopyClick(formID)}>
+                      <span className="sr-only">Copy</span>
+                      <Copy className="h-4 w-4" />
+                    </Button>
 
-                <Link href={`/edit-form/${formID}`}>
-                  <Button className="text-xs flex gap-1" size="sm">
-                    <Edit className="h-4 w-4" />
-                    Edit
-                  </Button>
-                </Link>
+                  </div>
+                  <DialogFooter className="sm:justify-start">
+                    <DialogClose asChild>
+                      <Button type="button" variant="secondary">
+                        Close
+                      </Button>
+                    </DialogClose>
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
+
+                  <Link href={`/edit-form/${formID}`}>
+                    <Button className="text-xs flex gap-1" size="sm">
+                      <Edit className="h-4 w-4" />
+                      Edit
+                    </Button>
+                  </Link>
+                </div>
               </div>
-              {/* Display other form data as needed */}
             </div>
           );
         })

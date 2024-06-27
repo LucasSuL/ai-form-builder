@@ -2,7 +2,12 @@
 
 import React, { useEffect, useState } from "react";
 import { useUser } from "@clerk/nextjs";
-import { ArrowLeft, Share, Share2, SquareArrowUpRight } from "lucide-react";
+import {
+  ArrowLeft,
+  Share,
+  SquareArrowUpRight,
+  Copy,
+} from "lucide-react";
 import supabase from "@/configs/Database";
 import { useRouter } from "next/navigation";
 import FormUI from "../_components/FormUI";
@@ -10,7 +15,18 @@ import { toast } from "sonner";
 import Controller from "../_components/Controller";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { RWebShare } from "react-web-share";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 const EditForm = ({ params }) => {
   const { user } = useUser();
@@ -85,7 +101,13 @@ const EditForm = ({ params }) => {
       .select();
   };
 
-  console.log(jsonForm);
+  const handleCopyClick = () => {
+    navigator.clipboard.writeText(`lucassu-ai-form-builder.vercel.app/preview/${id}`);
+    toast("Live link copied.", {
+      // description: `${new Date().toLocaleTimeString()},  ${new Date().toLocaleDateString()}`,
+    });
+  };
+
   return (
     <div>
       {jsonForm && (
@@ -103,25 +125,50 @@ const EditForm = ({ params }) => {
                   <SquareArrowUpRight className="h-5 w-5" /> Live Preview
                 </Button>
               </Link>
-              <RWebShare
-                data={{
-                  text:
-                    jsonForm.formSubtitle +
-                    ", build your own form in seconds with AI Form Builder.",
-                  url: `${process.env.NEXT_PUBLIC_BASE_URL}/preview/${id}`,
-                  title: jsonForm.formTitle,
-                }}
-                onClick={() => console.log("shared successfully!")}
-              >
-                <Button
-                  variant="outline"
-                  className="text-xs flex gap-1"
-                  size="sm"
-                >
-                  <Share className="h-4 w-4" />
-                  Share
-                </Button>
-              </RWebShare>
+
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className="text-xs flex gap-1"
+                  >
+                    <Share className="h-4 w-4" />
+                    Share
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-md">
+                  <DialogHeader>
+                    <DialogTitle>Share link</DialogTitle>
+                    <DialogDescription>
+                      Anyone who has this link will be able to view this.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="flex items-center space-x-2">
+                    <div className="grid flex-1 gap-2">
+                      <Label htmlFor="link" className="sr-only">
+                        Link
+                      </Label>
+                      <Input
+                        id="link"
+                        defaultValue={`lucassu-ai-form-builder.vercel.app/preview/${id}`}
+                        readOnly
+                      />
+                    </div>
+                    <Button type="submit" size="sm" className="px-3" onClick={handleCopyClick}>
+                      <span className="sr-only">Copy</span>
+                      <Copy className="h-4 w-4" />
+                    </Button>
+
+                  </div>
+                  <DialogFooter className="sm:justify-start">
+                    <DialogClose asChild>
+                      <Button type="button" variant="secondary">
+                        Close
+                      </Button>
+                    </DialogClose>
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">

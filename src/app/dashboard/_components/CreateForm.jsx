@@ -85,7 +85,7 @@ const CreateForm = () => {
 
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Create New Form</DialogTitle>
+            <DialogTitle>Generate New Form</DialogTitle>
             <DialogDescription>
               <Textarea
                 className="mt-2"

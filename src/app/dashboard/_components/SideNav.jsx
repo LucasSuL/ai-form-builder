@@ -3,10 +3,8 @@
 import { Library, LineChart, MessageCircle, Shield } from "lucide-react";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { Button } from "../../../components/ui/button";
 import { Progress } from "../../../components/ui/progress";
 import Link from "next/link";
-import CreateForm from "./CreateForm";
 import { useUser } from "@clerk/nextjs";
 import supabase from "@/configs/Database";
 
@@ -68,9 +66,9 @@ const SideNav = () => {
         ))}
       </div>
       <div className="fixed bottom-10 p-5 w-64">
-        <div className="w-full ">
+        {/* <div className="w-full ">
           <CreateForm />
-        </div>
+        </div> */}
         <div className="mt-5">
           <Progress value={(formList?.length/3)*100}  className="border-2"/>
           <p className="text-sm mt-2 text-gray-600">

@@ -19,6 +19,7 @@ import {
 import { toast } from "sonner";
 import { Edit, Loader2, Trash2 } from "lucide-react";
 import * as XLSX from "xlsx";
+import CreateForm from "../_components/CreateForm";
 
 const Responses = () => {
   const { user } = useUser();
@@ -114,9 +115,12 @@ const Responses = () => {
   const groupedResArray = Object.entries(groupedResList);
 
   return (
-    <div>
-      <h2 className="p-5 font-bold text-xl">Responses</h2>
-      <div className="mx-5 grid grid-cols-2 md:grid-cols-3 gap-5">
+    <div className="p-5 ">
+      <div className="flex justify-between items-center">
+        <h2 className="font-bold text-xl">Responses</h2>
+        <CreateForm />
+      </div>{" "}
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-5 mt-4">
         {groupedResArray ? (
           groupedResArray.map(([formID, resGroup]) => {
             // console.log(resJson);
@@ -126,67 +130,72 @@ const Responses = () => {
             return (
               <div
                 key={formID}
-                className="flex flex-col gap-1 shadow-md rounded-lg border p-3" // cursor-pointer hover:bg-gray-100 hover:shadow-lg
+                className="flex flex-col gap-1 shadow-md rounded-lg border p-3 justify-between" // cursor-pointer hover:bg-gray-100 hover:shadow-lg
               >
-                <div className="flex justify-between align-middle">
-                  <div></div>
-                  <AlertDialog>
-                    <AlertDialogTrigger>
-                      {" "}
-                      <Trash2 className="h-4 w-4 text-red-600 cursor-pointer hover:scale-105" />
-                    </AlertDialogTrigger>
-                    <AlertDialogContent>
-                      <AlertDialogHeader>
-                        <AlertDialogTitle>
-                          Are you absolutely sure?
-                        </AlertDialogTitle>
-                        <AlertDialogDescription>
-                          This action cannot be undone. This will permanently
-                          delete this response and remove your data from our
-                          servers.
-                        </AlertDialogDescription>
-                      </AlertDialogHeader>
-                      <AlertDialogFooter>
-                        <AlertDialogCancel>Cancel</AlertDialogCancel>
-                        <AlertDialogAction
-                          onClick={() => {
-                            onDeleteRes(formID);
-                          }}
-                        >
-                          Continue
-                        </AlertDialogAction>
-                      </AlertDialogFooter>
-                    </AlertDialogContent>
-                  </AlertDialog>
-                </div>
-                <p className="font-medium">{resForm.formTitle}</p>
-                <p className="text-sm text-gray-600">{resForm.formSubtitle}</p>
-                <hr className="my-2"></hr>
-                <div className="flex justify-between items-center gap-2">
-                  <p className="text-sm">
-                    <strong>{resGroup.length}</strong> Responses
+                <div>
+                  <div className="flex justify-between align-middle">
+                    <div></div>
+                    <AlertDialog>
+                      <AlertDialogTrigger>
+                        {" "}
+                        <Trash2 className="h-4 w-4 text-red-600 cursor-pointer hover:scale-105" />
+                      </AlertDialogTrigger>
+                      <AlertDialogContent>
+                        <AlertDialogHeader>
+                          <AlertDialogTitle>
+                            Are you absolutely sure?
+                          </AlertDialogTitle>
+                          <AlertDialogDescription>
+                            This action cannot be undone. This will permanently
+                            delete this response and remove your data from our
+                            servers.
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                          <AlertDialogCancel>Cancel</AlertDialogCancel>
+                          <AlertDialogAction
+                            onClick={() => {
+                              onDeleteRes(formID);
+                            }}
+                          >
+                            Continue
+                          </AlertDialogAction>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    </AlertDialog>
+                  </div>
+                  <p className="font-medium">{resForm.formTitle}</p>
+                  <p className="text-sm text-gray-600">
+                    {resForm.formSubtitle}
                   </p>
-
-                  <Button
-                    className="text-xs"
-                    size="sm"
-                    onClick={() => exportData(formID)}
-                    disabled={isExporting}
-                  >
-                    {isExporting ? (
-                      <div className="flex items-center gap-2">
-                        <Loader2 className="animate-spin" />
-                        Exporting...
-                      </div>
-                    ) : (
-                      <div className=" flex gap-1">
-                        <Edit className="h-4 w-4" />
-                        Export
-                      </div>
-                    )}
-                  </Button>
                 </div>
-                {/* Display other form data as needed */}
+                <div>
+                  <hr className="my-2"></hr>
+                  <div className="flex justify-between items-center gap-2">
+                    <p className="text-sm">
+                      <strong>{resGroup.length}</strong> Responses
+                    </p>
+
+                    <Button
+                      className="text-xs"
+                      size="sm"
+                      onClick={() => exportData(formID)}
+                      disabled={isExporting}
+                    >
+                      {isExporting ? (
+                        <div className="flex items-center gap-2">
+                          <Loader2 className="animate-spin" />
+                          Exporting...
+                        </div>
+                      ) : (
+                        <div className=" flex gap-1">
+                          <Edit className="h-4 w-4" />
+                          Export
+                        </div>
+                      )}
+                    </Button>
+                  </div>
+                </div>
               </div>
             );
           })

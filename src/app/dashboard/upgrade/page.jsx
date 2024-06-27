@@ -8,19 +8,23 @@ const Upgrade = () => {
   const user = useUser();
 
   return (
-    <div className="bg-slate-50">
+    // bg-slate-50
+    // Upgrade your subscription
+    <div className=""> 
       {user && (
         <div className="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:items-stretch md:grid-cols-3 md:gap-8">
             <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 shadow-lg bg-white">
               <div className="p-6 sm:px-8">
-                <h2 className="text-lg font-medium text-gray-900">
+                <h2 className="text-xl font-bold text-gray-900">
                   {PricingPlan[0].name}
                 </h2>
 
-                <p className="mt-2 text-gray-700">{PricingPlan[0].desc} </p>
+                <p className="mt-2 text-sm text-gray-500">
+                  {PricingPlan[0].desc}{" "}
+                </p>
 
-                <p className="mt-2 sm:mt-4">
+                <p className="mt-2 sm:mt-6">
                   <strong className="text-3xl font-bold text-gray-900 sm:text-4xl">
                     {" "}
                     {PricingPlan[0].price}${" "}
@@ -32,7 +36,7 @@ const Upgrade = () => {
                 </p>
 
                 <a
-                  className="mt-4 block rounded-lg border border-primary bg-primary px-12 py-3 text-center text-sm font-medium text-white hover:bg-transparent hover:text-primary focus:outline-none focus:ring active:text-indigo-500 sm:mt-6"
+                  className="mt-4 block rounded-lg border border-primary bg-primary px-12 py-2 text-center text-sm font-medium text-white hover:bg-transparent hover:text-primary focus:outline-none focus:ring active:text-indigo-500 sm:mt-6"
                   href={
                     PricingPlan[0].link +
                     "?prefilled_email=" +
@@ -45,11 +49,11 @@ const Upgrade = () => {
               </div>
 
               <div className="p-6 sm:px-8">
-                <p className="text-lg font-medium text-gray-900 sm:text-xl">
+                <p className="text-sm font-medium text-gray-900 sm:text-lg">
                   What's included:
                 </p>
 
-                <ul className="mt-2 space-y-2 sm:mt-4">
+                <ul className="mt-2 space-y-2 sm:mt-4 text-sm">
                   <li className="flex items-center gap-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -169,13 +173,15 @@ const Upgrade = () => {
 
             <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 shadow-lg bg-white">
               <div className="p-6 sm:px-8">
-                <h2 className="text-lg font-medium text-gray-900">
+                <h2 className="text-xl font-bold text-gray-900">
                   {PricingPlan[1].name}
                 </h2>
 
-                <p className="mt-2 text-gray-700">{PricingPlan[1].desc}</p>
+                <p className="mt-2 text-sm text-gray-500">
+                  {PricingPlan[1].desc}
+                </p>
 
-                <p className="mt-2 sm:mt-4">
+                <p className="mt-2 sm:mt-6">
                   <strong className="text-3xl font-bold text-gray-900 sm:text-4xl">
                     {" "}
                     {PricingPlan[1].price}${" "}
@@ -187,7 +193,7 @@ const Upgrade = () => {
                 </p>
 
                 <a
-                  className="mt-4 block rounded-lg border border-primary bg-primary px-12 py-3 text-center text-sm font-medium text-white hover:bg-transparent hover:text-primary focus:outline-none focus:ring active:text-indigo-500 sm:mt-6"
+                  className="mt-4 block rounded-lg border border-primary bg-primary px-12 py-2 text-center text-sm font-medium text-white hover:bg-transparent hover:text-primary focus:outline-none focus:ring active:text-indigo-500 sm:mt-6"
                   href={
                     PricingPlan[1].link +
                     "?prefilled_email=" +
@@ -200,11 +206,11 @@ const Upgrade = () => {
               </div>
 
               <div className="p-6 sm:px-8">
-                <p className="text-lg font-medium text-gray-900 sm:text-xl">
+                <p className="text-sm font-medium text-gray-900 sm:text-lg">
                   What's included:
                 </p>
 
-                <ul className="mt-2 space-y-2 sm:mt-4">
+                <ul className="mt-2 space-y-2 sm:mt-4 text-sm">
                   <li className="flex items-center gap-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -324,14 +330,16 @@ const Upgrade = () => {
 
             <div className="divide-y divide-gray-200 rounded-2xl border border-gray-200 shadow-lg bg-white">
               <div className="p-6 sm:px-8">
-                <h2 className="text-lg font-medium text-gray-900">
+                <h2 className="text-xl font-bold text-gray-900">
                   {" "}
                   {PricingPlan[2].name}
                 </h2>
 
-                <p className="mt-2 text-gray-700">{PricingPlan[2].desc} </p>
+                <p className="mt-2 text-sm text-gray-500">
+                  {PricingPlan[2].desc}{" "}
+                </p>
 
-                <p className="mt-2 sm:mt-4">
+                <p className="mt-2 sm:mt-6">
                   <strong className="text-3xl font-bold text-gray-900 sm:text-3xl">
                     {" "}
                     {PricingPlan[2].price}{" "}
@@ -339,7 +347,7 @@ const Upgrade = () => {
                 </p>
 
                 <a
-                  className="mt-4 block rounded-lg border border-primary bg-primary px-12 py-3 text-center text-sm font-medium text-white hover:bg-transparent hover:text-primary focus:outline-none focus:ring active:text-indigo-500 sm:mt-6"
+                  className="mt-4 block rounded-lg border border-primary bg-primary px-12 py-2 text-center text-sm font-medium text-white hover:bg-transparent hover:text-primary focus:outline-none focus:ring active:text-indigo-500 sm:mt-6"
                   href={
                     PricingPlan[2].link +
                     "?prefilled_email=" +
@@ -352,11 +360,11 @@ const Upgrade = () => {
               </div>
 
               <div className="p-6 sm:px-8">
-                <p className="text-lg font-medium text-gray-900 sm:text-xl">
+                <p className="text-sm font-medium text-gray-900 sm:text-lg">
                   What's included:
                 </p>
 
-                <ul className="mt-2 space-y-2 sm:mt-4">
+                <ul className="mt-2 space-y-2 sm:mt-4 text-sm">
                   <li className="flex items-center gap-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
