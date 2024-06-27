@@ -15,7 +15,7 @@ const Hero = () => {
   return (
     <div id="top">
       <section
-        className="h-auto bg-gradient-to-br from-violet-100 to-blue-100"
+        className="h-auto bg-gradient-to-br from-violet-200 to-blue-200"
         id="1"
       >
         <div className="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-fit">
@@ -53,7 +53,7 @@ const Hero = () => {
             How it works
           </h1>
           <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-3">
-            <article className="rounded-lg border-2 border-gray-300 shadow-xl px-5 py-10 hover:shadow-none">
+            <article className="rounded-2xl border-2 border-gray-300 shadow-xl px-5 py-10 hover:shadow-none">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">
                 1. Create Your Form
               </h2>
@@ -78,7 +78,7 @@ const Hero = () => {
                 <CreateForm isFromHero={true} />
               </div>
             </article>
-            <article className="rounded-lg border-2 border-gray-300 shadow-xl px-5 py-10 hover:shadow-none">
+            <article className="rounded-2xl border-2 border-gray-300 shadow-xl px-5 py-10 hover:shadow-none">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">
                 2. Customize Your Form
               </h2>
@@ -115,7 +115,7 @@ const Hero = () => {
                 </Link>
               </div>
             </article>{" "}
-            <article className="rounded-lg border-2 border-gray-300 shadow-xl px-5 py-10 hover:shadow-none">
+            <article className="rounded-2xl border-2 border-gray-300 shadow-xl px-5 py-10 hover:shadow-none">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">
                 3. Manage Forms and Data
               </h2>
@@ -329,13 +329,16 @@ const Hero = () => {
                     </div>
 
                     <p className="mt-0.5 text-lg font-medium text-gray-900">
-                    James Bennett
+                      James Bennett
                     </p>
                   </div>
                 </div>
 
                 <p className="mt-4 text-gray-700">
-                This website is incredibly user-friendly and intuitive. The ability to create custom forms tailored to our needs has significantly streamlined our data collection process. Highly recommend!
+                  This website is incredibly user-friendly and intuitive. The
+                  ability to create custom forms tailored to our needs has
+                  significantly streamlined our data collection process. Highly
+                  recommend!
                 </p>
               </blockquote>
 
@@ -392,78 +395,18 @@ const Hero = () => {
                     </div>
 
                     <p className="mt-0.5 text-lg font-medium text-gray-900">
-                    Olivia Harris
+                      Olivia Harris
                     </p>
                   </div>
                 </div>
 
                 <p className="mt-4 text-gray-700">
-                I've been using this platform for a few months now, and it's been a game-changer for our team. The real-time data export feature saves us so much time and effort. Excellent service!
+                  I've been using this platform for a few months now, and it's
+                  been a game-changer for our team. The real-time data export
+                  feature saves us so much time and effort. Excellent service!
                 </p>
               </blockquote>
 
-              <blockquote className="rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8">
-                <div className="flex items-center gap-4">
-                  <img
-                    alt=""
-                    src="/users/user-3.png"
-                    className="size-14 rounded-full object-cover"
-                  />
-
-                  <div>
-                    <div className="flex justify-center gap-0.5 text-green-500">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    </div>
-
-                    <p className="mt-0.5 text-lg font-medium text-gray-900">
-                    Ethan Walker
-                    </p>
-                  </div>
-                </div>
-
-                <p className="mt-4 text-gray-700">
-                The design and functionality of this website are top-notch. It’s so easy to share forms with our audience and track responses. Customer support is also very responsive and helpful.
-                </p>
-              </blockquote>
               <blockquote className="rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8">
                 <div className="flex items-center gap-4">
                   <img
@@ -517,13 +460,81 @@ const Hero = () => {
                     </div>
 
                     <p className="mt-0.5 text-lg font-medium text-gray-900">
-                    Charlotte Robinson
+                      Ethan Walker
                     </p>
                   </div>
                 </div>
 
                 <p className="mt-4 text-gray-700">
-                Our organisation needed a reliable tool for collecting feedback, and this website delivered beyond our expectations. The interface is simple yet powerful, making it a breeze to use.
+                  The design and functionality of this website are top-notch.
+                  It’s so easy to share forms with our audience and track
+                  responses. Customer support is also very responsive and
+                  helpful.
+                </p>
+              </blockquote>
+              <blockquote className="rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8">
+                <div className="flex items-center gap-4">
+                  <img
+                    alt=""
+                    src="/users/user-3.png"
+                    className="size-14 rounded-full object-cover"
+                  />
+
+                  <div>
+                    <div className="flex justify-center gap-0.5 text-green-500">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    </div>
+
+                    <p className="mt-0.5 text-lg font-medium text-gray-900">
+                      Charlotte Robinson
+                    </p>
+                  </div>
+                </div>
+
+                <p className="mt-4 text-gray-700">
+                  Our organisation needed a reliable tool for collecting
+                  feedback, and this website delivered beyond our expectations.
+                  The interface is simple yet powerful, making it a breeze to
+                  use.
                 </p>
               </blockquote>
 
@@ -580,13 +591,16 @@ const Hero = () => {
                     </div>
 
                     <p className="mt-0.5 text-lg font-medium text-gray-900">
-                    Liam Turner
+                      Liam Turner
                     </p>
                   </div>
                 </div>
 
                 <p className="mt-4 text-gray-700">
-                What I love most about this website is the flexibility it offers. We can customise forms exactly how we want and get detailed insights from the responses. It’s been a fantastic addition to our toolkit.
+                  What I love most about this website is the flexibility it
+                  offers. We can customise forms exactly how we want and get
+                  detailed insights from the responses. It’s been a fantastic
+                  addition to our toolkit.
                 </p>
               </blockquote>
 
@@ -643,13 +657,16 @@ const Hero = () => {
                     </div>
 
                     <p className="mt-0.5 text-lg font-medium text-gray-900">
-                    Mia Phillips
+                      Mia Phillips
                     </p>
                   </div>
                 </div>
 
                 <p className="mt-4 text-gray-700">
-                I appreciate how seamless the experience is with this platform. From form creation to exporting data, everything works flawlessly. It's clear a lot of thought has gone into making this site as efficient as possible.
+                  I appreciate how seamless the experience is with this
+                  platform. From form creation to exporting data, everything
+                  works flawlessly. It's clear a lot of thought has gone into
+                  making this site as efficient as possible.
                 </p>
               </blockquote>
             </div>
