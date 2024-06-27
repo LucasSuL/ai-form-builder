@@ -70,12 +70,12 @@ const SideNav = () => {
           <CreateForm />
         </div> */}
         <div className="mt-5">
-          <Progress value={(formList?.length/3)*100}  className="border-2"/>
+          <Progress value={(formList?.length/5)*100}  className="border-2"/>
           <p className="text-sm mt-2 text-gray-600">
-            <strong>{formList?.length} </strong>Out of <strong>3</strong> File Created
+            <strong>{formList?.length} </strong>Out of <strong>5</strong> File Created
           </p>
           <p className="text-sm mt-2 text-gray-600">
-            Update your plan for <strong>unlimited</strong> AI form build
+            <a className="underline"href="https://lucassu-ai-form-builder.vercel.app/dashboard/upgrade">Update your plan</a> for<strong>  unlimited</strong> AI form build
           </p>
         </div>
       </div>

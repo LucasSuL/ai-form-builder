@@ -44,7 +44,7 @@ const Hero = () => {
           <h1 className="text-3xl font-extrabold sm:text-5xl text-center mb-12">
             How it works
           </h1>
-          <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-3">
             <article className="rounded-lg border-2 border-gray-300 shadow-xl px-5 py-10 hover:shadow-none">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">
                 1. Create Your Form
@@ -67,18 +67,8 @@ const Hero = () => {
                   explicabo corporis voluptatem?
                 </p>
 
-                <a
-                  href="#"
-                  className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600"
-                >
-                  Create Yours
-                  <span
-                    aria-hidden="true"
-                    className="block transition-all group-hover:ms-0.5 rtl:rotate-180"
-                  >
-                    &rarr;
-                  </span>
-                </a>
+                <CreateForm isFromHero = {true}/>
+               
               </div>
             </article>
             <article className="rounded-lg border-2 border-gray-300 shadow-xl px-5 py-10 hover:shadow-none">
@@ -111,7 +101,7 @@ const Hero = () => {
                   Try it
                   <span
                     aria-hidden="true"
-                    className="block transition-all group-hover:ms-0.5 rtl:rotate-180"
+                    className="block transition-all group-hover:ms-1 rtl:rotate-180"
                   >
                     &rarr;
                   </span>
@@ -148,7 +138,7 @@ const Hero = () => {
                   Dashboard
                   <span
                     aria-hidden="true"
-                    className="block transition-all group-hover:ms-0.5 rtl:rotate-180"
+                    className="block transition-all group-hover:ms-1 rtl:rotate-180"
                   >
                     &rarr;
                   </span>

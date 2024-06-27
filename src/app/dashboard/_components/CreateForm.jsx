@@ -31,7 +31,7 @@ const extractJsonString = (input) => {
   return null;
 };
 
-const CreateForm = () => {
+const CreateForm = ({ isFromHero }) => {
   const [userInput, setUserInput] = useState("");
   const [loading, setLoading] = useState(false);
   const { user } = useUser();
@@ -80,7 +80,21 @@ const CreateForm = () => {
     <div>
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="">+ Create Form</Button>
+          {isFromHero ? (
+            <a
+              className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer"
+            >
+              Create Yours
+              <span
+                aria-hidden="true"
+                className="block transition-all group-hover:ms-1 rtl:rotate-180"
+              >
+                &rarr;
+              </span>
+            </a>
+          ) : (
+            <Button variant="">+ Create Form</Button>
+          )}
         </DialogTrigger>
 
         <DialogContent>
@@ -94,7 +108,11 @@ const CreateForm = () => {
               />
               <div className="flex gap-2 mt-5 justify-end">
                 <DialogClose asChild>
-                  <Button type="button" variant="destructive" disabled={loading}>
+                  <Button
+                    type="button"
+                    variant="destructive"
+                    disabled={loading}
+                  >
                     Close
                   </Button>
                 </DialogClose>
