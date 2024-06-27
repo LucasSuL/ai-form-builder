@@ -5,8 +5,11 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <div className="" id="1">
-      <section className="h-auto bg-gradient-to-br from-violet-100 to-blue-100">
+    <div>
+      <section
+        className="h-auto bg-gradient-to-br from-violet-100 to-blue-100"
+        id="1"
+      >
         <div className="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-fit">
           <div className="mx-auto max-w-xl text-center">
             <h1 className="text-3xl font-extrabold sm:text-5xl">
@@ -38,132 +41,118 @@ const Hero = () => {
 
       <section id="2-steps">
         <div className="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-          <h1 className="text-3xl font-extrabold sm:text-5xl"> How it works</h1>
-          <div className="flex gap-3">
-            <article className="hover:animate-background rounded-xl bg-gradient-to-r from-blue-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:bg-[length:400%_400%] hover:shadow-sm hover:[animation-duration:_4s]">
-              <div className="rounded-[10px] bg-white p-4 !pt-20 sm:p-6">
+          <h1 className="text-3xl font-extrabold sm:text-5xl text-center mb-12">
+            How it works
+          </h1>
+          <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <article className="rounded-lg border-2 border-gray-300 shadow-xl px-5 py-10 hover:shadow-none">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                1. Create Your Form
+              </h2>
+              <img
+                alt=""
+                src="/create_form.png"
+                className="h-60 w-full object-cover"
+              />
 
-                <article className="overflow-hidden rounded-lg border border-gray-100 bg-white shadow-sm">
-                  <img
-                    alt=""
-                    src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                    className="h-56 w-full object-cover"
-                  />
+              <div className="p-4 sm:p-6">
+                <a href="#"></a>
 
-                  <div className="p-4 sm:p-6">
-                    <a href="#">
-                      <h3 className="text-lg font-medium text-gray-900">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      </h3>
-                    </a>
+                <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Recusandae dolores, possimus pariatur animi temporibus
+                  nesciunt praesentium dolore sed nulla ipsum eveniet corporis
+                  quidem, mollitia itaque minus soluta, voluptates neque
+                  explicabo tempora nisi culpa eius atque dignissimos. Molestias
+                  explicabo corporis voluptatem?
+                </p>
 
-                    <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Recusandae dolores, possimus pariatur animi temporibus
-                      nesciunt praesentium dolore sed nulla ipsum eveniet
-                      corporis quidem, mollitia itaque minus soluta, voluptates
-                      neque explicabo tempora nisi culpa eius atque dignissimos.
-                      Molestias explicabo corporis voluptatem?
-                    </p>
-
-                    <a
-                      href="#"
-                      className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600"
-                    >
-                      Find out more
-                      <span
-                        aria-hidden="true"
-                        className="block transition-all group-hover:ms-0.5 rtl:rotate-180"
-                      >
-                        &rarr;
-                      </span>
-                    </a>
-                  </div>
-                </article>
+                <a
+                  href="#"
+                  className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600"
+                >
+                  Create Yours
+                  <span
+                    aria-hidden="true"
+                    className="block transition-all group-hover:ms-0.5 rtl:rotate-180"
+                  >
+                    &rarr;
+                  </span>
+                </a>
               </div>
             </article>
-            <article className="hover:animate-background rounded-xl bg-gradient-to-r from-blue-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:bg-[length:400%_400%] hover:shadow-sm hover:[animation-duration:_4s]">
-              <div className="rounded-[10px] bg-white p-4 !pt-20 sm:p-6">
+            <article className="rounded-lg border-2 border-gray-300 shadow-xl px-5 py-10 hover:shadow-none">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                2. Customize Your Form
+              </h2>
+              <img
+                alt=""
+                src="/edit_form.png"
+                className="h-60 w-full object-cover"
+              />
 
-                <article className="overflow-hidden rounded-lg border border-gray-100 bg-white shadow-sm">
-                  <img
-                    alt=""
-                    src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                    className="h-56 w-full object-cover"
-                  />
+              <div className="p-4 sm:p-6">
+                <a href="#"></a>
 
-                  <div className="p-4 sm:p-6">
-                    <a href="#">
-                      <h3 className="text-lg font-medium text-gray-900">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      </h3>
-                    </a>
+                <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Recusandae dolores, possimus pariatur animi temporibus
+                  nesciunt praesentium dolore sed nulla ipsum eveniet corporis
+                  quidem, mollitia itaque minus soluta, voluptates neque
+                  explicabo tempora nisi culpa eius atque dignissimos. Molestias
+                  explicabo corporis voluptatem?
+                </p>
 
-                    <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Recusandae dolores, possimus pariatur animi temporibus
-                      nesciunt praesentium dolore sed nulla ipsum eveniet
-                      corporis quidem, mollitia itaque minus soluta, voluptates
-                      neque explicabo tempora nisi culpa eius atque dignissimos.
-                      Molestias explicabo corporis voluptatem?
-                    </p>
-
-                    <a
-                      href="#"
-                      className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600"
-                    >
-                      Find out more
-                      <span
-                        aria-hidden="true"
-                        className="block transition-all group-hover:ms-0.5 rtl:rotate-180"
-                      >
-                        &rarr;
-                      </span>
-                    </a>
-                  </div>
-                </article>
+                <Link
+                  href="https://lucassu-ai-form-builder.vercel.app/edit-form/28"
+                  className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600"
+                  target="_blank"
+                >
+                  Try it
+                  <span
+                    aria-hidden="true"
+                    className="block transition-all group-hover:ms-0.5 rtl:rotate-180"
+                  >
+                    &rarr;
+                  </span>
+                </Link>
               </div>
-            </article>
-            <article className="hover:animate-background rounded-xl bg-gradient-to-r from-blue-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:bg-[length:400%_400%] hover:shadow-sm hover:[animation-duration:_4s]">
-              <div className="rounded-[10px] bg-white p-4 !pt-20 sm:p-6">
+            </article>{" "}
+            <article className="rounded-lg border-2 border-gray-300 shadow-xl px-5 py-10 hover:shadow-none">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                3. Manage Forms and Data
+              </h2>
+              <img
+                alt=""
+                src="/manage_form.png"
+                className="h-60 w-full object-cover"
+              />
 
-                <article className="overflow-hidden rounded-lg border border-gray-100 bg-white shadow-sm">
-                  <img
-                    alt=""
-                    src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                    className="h-56 w-full object-cover"
-                  />
+              <div className="p-4 sm:p-6">
+                <a href="#"></a>
 
-                  <div className="p-4 sm:p-6">
-                    <a href="#">
-                      <h3 className="text-lg font-medium text-gray-900">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      </h3>
-                    </a>
+                <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Recusandae dolores, possimus pariatur animi temporibus
+                  nesciunt praesentium dolore sed nulla ipsum eveniet corporis
+                  quidem, mollitia itaque minus soluta, voluptates neque
+                  explicabo tempora nisi culpa eius atque dignissimos. Molestias
+                  explicabo corporis voluptatem?
+                </p>
 
-                    <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Recusandae dolores, possimus pariatur animi temporibus
-                      nesciunt praesentium dolore sed nulla ipsum eveniet
-                      corporis quidem, mollitia itaque minus soluta, voluptates
-                      neque explicabo tempora nisi culpa eius atque dignissimos.
-                      Molestias explicabo corporis voluptatem?
-                    </p>
-
-                    <a
-                      href="#"
-                      className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600"
-                    >
-                      Find out more
-                      <span
-                        aria-hidden="true"
-                        className="block transition-all group-hover:ms-0.5 rtl:rotate-180"
-                      >
-                        &rarr;
-                      </span>
-                    </a>
-                  </div>
-                </article>
+                <Link
+                  href="https://lucassu-ai-form-builder.vercel.app/dashboard"
+                  className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600"
+                  target="_blank"
+                >
+                  Dashboard
+                  <span
+                    aria-hidden="true"
+                    className="block transition-all group-hover:ms-0.5 rtl:rotate-180"
+                  >
+                    &rarr;
+                  </span>
+                </Link>
               </div>
             </article>
           </div>
