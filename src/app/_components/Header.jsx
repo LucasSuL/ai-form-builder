@@ -20,7 +20,7 @@ const Header = () => {
             <Link href={'/'}>
             <div className="flex gap-1 items-center">
               <Image src="/logo.svg" width={40} height={40} />
-              <p className="font-bold text-lg">AI Form Builder</p>
+              <p className="font-bold text-lg hidden sm:block">AI Form Builder</p>
             </div>
             </Link>
             {isSignedIn ? (
