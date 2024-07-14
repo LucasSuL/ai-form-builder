@@ -14,46 +14,44 @@ import {
 const Hero = () => {
   return (
     <div id="top">
-      <section
-        className="h-auto bg-gradient-to-br from-violet-200 to-blue-200"
-        id="1"
-      >
-        <div className="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-fit">
-          <div className="mx-auto max-w-xl text-center">
-            <h1 className="text-3xl font-extrabold sm:text-5xl">
+      <section className="h-auto" id="1">
+        <div className="mx-auto max-w-screen-xl px-4 pt-40 lg:flex lg:h-fit">
+          <div className="mx-auto max-w-2xl text-center">
+            <h1 className="text-3xl font-extrabold md:text-5xl xl:text-6xl">
               Create Your Form
-              <strong className="font-extrabold text-primary sm:block">
+              <strong className="font-extrabold text-primary sm:block mt-2">
                 {" "}
                 In Seconds Not Hours!{" "}
               </strong>
             </h1>
 
-            <p className="mt-4 sm:text-xl/relaxed">
-              Generate, publish and share your form right away with AI. Dive
-              into insightful results, charts, and analytics.
+            <p className="mt-8 sm:text-xl/relaxed">
+              Generate, customize, publish and share your form right away with{" "}
+              <strong>AI</strong>. Dive into insightful results, charts, and
+              analytics.
             </p>
 
             <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <CreateForm />
+              <CreateForm isFromBanner={true} />
 
-              <Link
+              {/* <Link
                 href={"https://github.com/LucasSuL/ai-form-builder"}
                 target="_blank"
               >
-                <Button variant="outline">Learn More</Button>
-              </Link>
+                <Button variant="outline" className="bg-white border-purple-400 hover:border-purple-600">Learn More</Button>
+              </Link> */}
             </div>
           </div>
         </div>
       </section>
 
       <section id="2-steps">
-        <div className="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-          <h1 className="text-3xl font-extrabold sm:text-5xl text-center mb-12">
+        <div className="mx-auto max-w-screen-xl px-4 pt-16 sm:px-6 lg:px-8 lg:pt-24">
+          <h1 className="text-3xl font-extrabold sm:text-4xl text-center mb-12 text-orange-500">
             How it works
           </h1>
           <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-3">
-            <article className="rounded-2xl border-2 border-gray-300 shadow-xl px-5 py-10 hover:shadow-none">
+            <article className="rounded-2xl border-2 border-gray-300 shadow-xl px-5 py-10 hover:shadow-none bg-white">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">
                 1. Create Your Form
               </h2>
@@ -67,18 +65,13 @@ const Hero = () => {
                 <a href="#"></a>
 
                 <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Recusandae dolores, possimus pariatur animi temporibus
-                  nesciunt praesentium dolore sed nulla ipsum eveniet corporis
-                  quidem, mollitia itaque minus soluta, voluptates neque
-                  explicabo tempora nisi culpa eius atque dignissimos. Molestias
-                  explicabo corporis voluptatem?
+                Use our intuitive interface to quickly generate new forms. Simply input your questions and customise the layout to suit your needs. Creating forms has never been easier.
                 </p>
 
                 <CreateForm isFromHero={true} />
               </div>
             </article>
-            <article className="rounded-2xl border-2 border-gray-300 shadow-xl px-5 py-10 hover:shadow-none">
+            <article className="rounded-2xl border-2 border-gray-300 shadow-xl px-5 py-10 hover:shadow-none bg-white">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">
                 2. Customize Your Form
               </h2>
@@ -92,12 +85,7 @@ const Hero = () => {
                 <a href="#"></a>
 
                 <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Recusandae dolores, possimus pariatur animi temporibus
-                  nesciunt praesentium dolore sed nulla ipsum eveniet corporis
-                  quidem, mollitia itaque minus soluta, voluptates neque
-                  explicabo tempora nisi culpa eius atque dignissimos. Molestias
-                  explicabo corporis voluptatem?
+                Tailor your forms with our robust customisation options. Choose from a variety of colours, fonts, and styles to make your forms visually appealing and aligned with your brand identity.
                 </p>
 
                 <Link
@@ -115,7 +103,7 @@ const Hero = () => {
                 </Link>
               </div>
             </article>{" "}
-            <article className="rounded-2xl border-2 border-gray-300 shadow-xl px-5 py-10 hover:shadow-none">
+            <article className="rounded-2xl border-2 border-gray-300 shadow-xl px-5 py-10 hover:shadow-none bg-white">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">
                 3. Manage Forms and Data
               </h2>
@@ -129,12 +117,7 @@ const Hero = () => {
                 <a href="#"></a>
 
                 <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Recusandae dolores, possimus pariatur animi temporibus
-                  nesciunt praesentium dolore sed nulla ipsum eveniet corporis
-                  quidem, mollitia itaque minus soluta, voluptates neque
-                  explicabo tempora nisi culpa eius atque dignissimos. Molestias
-                  explicabo corporis voluptatem?
+                Monitor and manage all your forms and data from a single dashboard. Track responses in real-time, analyse results, and make data-driven decisions to enhance your campaigns.
                 </p>
 
                 <Link
@@ -157,17 +140,18 @@ const Hero = () => {
       </section>
 
       <section id="4-marketing">
-        <section className="bg-gray-900 text-white pb-20">
+        <section className="bg-gray-900 text-white pb-20 mt-16">
           <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
             <div className="mx-auto max-w-lg text-center">
               <h2 className="text-3xl font-bold sm:text-4xl">
-                Kickstart your marketing
+                Elevate Your Marketing with Powerful Form Tools
               </h2>
 
               <p className="mt-4 text-gray-300">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Consequuntur aliquam doloribus nesciunt eos fugiat. Vitae
-                aperiam fugit consequuntur saepe laborum.
+                Our suite of tools empowers you to create, share, and manage
+                custom forms effortlessly. Experience seamless integration,
+                real-time insights, and advanced customisation to drive
+                engagement and efficiency in your marketing campaigns.
               </p>
             </div>
 
@@ -272,7 +256,7 @@ const Hero = () => {
         <section className="bg-white">
           <div className="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
             <h2 className="text-center text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-              Read trusted reviews from our customers
+              Read trusted reviews from our users
             </h2>
 
             <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8">

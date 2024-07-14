@@ -4,6 +4,7 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #F6F8FF;
 }
 
 @layer base {
@@ -76,5 +77,6 @@ html {
   }
   body {
     @apply bg-background text-foreground;
+    background-color: #F6F8FF; /* Ensure the background color is set */
   }
 }

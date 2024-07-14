@@ -31,7 +31,7 @@ const extractJsonString = (input) => {
   return null;
 };
 
-const CreateForm = ({ isFromHero }) => {
+const CreateForm = ({ isFromHero, isFromBanner }) => {
   const [userInput, setUserInput] = useState("");
   const [loading, setLoading] = useState(false);
   const { user } = useUser();
@@ -81,9 +81,7 @@ const CreateForm = ({ isFromHero }) => {
       <Dialog>
         <DialogTrigger asChild>
           {isFromHero ? (
-            <a
-              className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer"
-            >
+            <a className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600 cursor-pointer">
               Create Yours
               <span
                 aria-hidden="true"
@@ -92,6 +90,8 @@ const CreateForm = ({ isFromHero }) => {
                 &rarr;
               </span>
             </a>
+          ) : isFromBanner ? (
+            <Button variant="" className="rounded-full tracking-widest py-6 mt-3" size="lg">GET STARTED FOR FREE</Button>
           ) : (
             <Button variant="">+ Create Form</Button>
           )}
