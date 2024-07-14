@@ -130,7 +130,7 @@ const Responses = () => {
             return (
               <div
                 key={formID}
-                className="flex flex-col gap-1 shadow-md rounded-lg border p-3 justify-between" // cursor-pointer hover:bg-gray-100 hover:shadow-lg
+                className="flex flex-col gap-1 shadow-md rounded-lg border p-3 justify-between bg-white" // cursor-pointer hover:bg-gray-100 hover:shadow-lg
               >
                 <div>
                   <div className="flex justify-between align-middle">

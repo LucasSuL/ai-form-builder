@@ -50,7 +50,7 @@ const SideNav = () => {
   // }, [path]);
 
   return (
-    <div className="h-screen shadow-md border-r">
+    <div className="h-screen shadow-md border-r bg-white">
       <div className="p-5 text-sm">
         {menuList.map((menu, index) => (
           <Link
