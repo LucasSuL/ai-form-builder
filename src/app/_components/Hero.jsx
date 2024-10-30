@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import CreateForm from "../dashboard/_components/CreateForm";
 import { Button } from "@/components/ui/button";
@@ -10,8 +12,11 @@ import {
   Shield,
   Smile,
 } from "lucide-react";
+import { SignInButton, UserButton, useUser } from "@clerk/nextjs";
 
 const Hero = () => {
+  const { user, isSignedIn } = useUser();
+
   return (
     <div id="top">
       <section className="h-auto" id="1">
@@ -32,13 +37,22 @@ const Hero = () => {
             </p>
 
             <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <CreateForm isFromBanner={true} />
+              {!isSignedIn ? (
+                <SignInButton>
+                  {/* <CreateForm isFromBanner={true} /> */}
+                  <Button className="rounded-full uppercase tracking-wider font-bold text-xl p-7 px-10">
+                    Get Started for free
+                  </Button>
+                </SignInButton>
+              ) : (
+                <CreateForm />
+              )}
 
               {/* <Link
                 href={"https://github.com/LucasSuL/ai-form-builder"}
                 target="_blank"
               >
-                <Button variant="outline" className="bg-white border-purple-400 hover:border-purple-600">Learn More</Button>
+                <Button variant="outline" className="bg-white border-purple-400 hover:border-purple-600">GitHub</Button>
               </Link> */}
             </div>
           </div>
@@ -65,7 +79,9 @@ const Hero = () => {
                 <a href="#"></a>
 
                 <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-                Use our intuitive interface to quickly generate new forms. Simply input your questions and customise the layout to suit your needs. Creating forms has never been easier.
+                  Use our intuitive interface to quickly generate new forms.
+                  Simply input your questions and customise the layout to suit
+                  your needs. Creating forms has never been easier.
                 </p>
 
                 <CreateForm isFromHero={true} />
@@ -85,7 +101,10 @@ const Hero = () => {
                 <a href="#"></a>
 
                 <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-                Tailor your forms with our robust customisation options. Choose from a variety of colours, fonts, and styles to make your forms visually appealing and aligned with your brand identity.
+                  Tailor your forms with our robust customisation options.
+                  Choose from a variety of colours, fonts, and styles to make
+                  your forms visually appealing and aligned with your brand
+                  identity.
                 </p>
 
                 <Link
@@ -117,7 +136,9 @@ const Hero = () => {
                 <a href="#"></a>
 
                 <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-                Monitor and manage all your forms and data from a single dashboard. Track responses in real-time, analyse results, and make data-driven decisions to enhance your campaigns.
+                  Monitor and manage all your forms and data from a single
+                  dashboard. Track responses in real-time, analyse results, and
+                  make data-driven decisions to enhance your campaigns.
                 </p>
 
                 <Link

@@ -57,7 +57,7 @@ const CreateForm = ({ isFromHero, isFromBanner }) => {
         .insert([
           {
             jsonForm: extracted,
-            createBy: user?.primaryEmailAddress?.emailAddress,
+            createBy: user?.primaryEmailAddress?.emailAddress || "Guest",
           },
         ])
         .select("id");

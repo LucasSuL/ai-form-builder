@@ -14,7 +14,7 @@ const Header = () => {
   return (
     // if in preview page, hide header
     !path.includes("preview") && (
-      <div className="border-b shadow-sm px-5 py-2 sticky z-[100] h-14 inset-x-0 top-0 w-full border-gray-200 bg-white/75 backdrop-blur-lg transition-all">
+      <div className="border-b shadow-sm px-5 py-5 sticky z-[100] h-20 inset-x-0 top-0 w-full border-gray-200 bg-white/75 backdrop-blur-lg transition-all">
         {/* <div className="max-w-6xl mx-auto p-3"> */}
           <div className="flex items-center justify-between">
             <Link href={'/'}>
